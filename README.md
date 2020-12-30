@@ -3,6 +3,7 @@
 ## Technologies Used
 
 - React copy to clipboard
+- Chroma JS (for color conversion)
 
 ## Getting Started with Create React App
 
