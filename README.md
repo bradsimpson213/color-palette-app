@@ -4,6 +4,7 @@
 
 - React copy to clipboard
 - Chroma JS (for color conversion)
+- React Component Slider (rc-slider) (for color palette slider)
 
 ## Getting Started with Create React App
 
