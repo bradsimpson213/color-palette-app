@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import useToggleState from "./hooks/useToggleState";
 import Slider from "rc-slider";
 import Select from "@material-ui/core/Select";
@@ -24,7 +25,7 @@ const Navbar = (props) => {
     return (
         <header className="Navbar">
             <div className="logo">
-                <a href="/">colorpickerapp</a>
+                <Link to="/">colorpickerapp🎨</Link>
             </div>
             <div className="slider-container">
                 <span>Level: { level }</span>
