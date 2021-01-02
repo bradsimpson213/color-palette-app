@@ -7,16 +7,19 @@ import "./Palette.css";
 const Palette = (props) => {
     const [level, setLevel] = useState(500);
     const [format, setFormat] = useState("hex");
-   
+    const { colors, paletteName, emoji } = props.palette;
+
     const changeFormat = (value) => {
         setFormat(value);
     };
-
-
-    const { colors } = props.palette;
+   
     const colorBoxes = colors[level].map(color => {
-        return <ColorBox background={ color[format] } name={ color.name } />
+        return <ColorBox 
+            background={ color[format] } 
+            name={ color.name } 
+            key={ color.id }/>
     })
+
     return (
         <div className="Palette">
             <NavBar 
@@ -24,11 +27,13 @@ const Palette = (props) => {
                 setLevel= { setLevel }
                 handleChange= { changeFormat }
             />
-            {/* Navbar goes here */}
             <div className="Palette-colors">
             { colorBoxes }
             </div>
-            {/* footer goes here */}
+            <footer className="Palette-footer">
+                { paletteName }
+                <span className="Palette-emoji">{ emoji }</span>
+            </footer>
         </div>
     )
 };
