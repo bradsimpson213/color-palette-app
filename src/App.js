@@ -18,13 +18,17 @@ const App = () => {
         render={ () => <PaletteList palettes={ seedColors } /> }
       />
       <Route 
-        exact path ="/palette/:id" 
+        exact path="/palette/:id" 
         render={routeProps => 
           <Palette 
             palette={ generatePalette(
               findPalette(routeProps.match.params.id)) }
           />
         }
+      />
+      <Route
+        exact path="/palette/:paletteId/:colorId"
+        render= { () => <h1>SINGLE COLOR PAGE</h1>}
       />
     </Switch>
     // <div className="App">
