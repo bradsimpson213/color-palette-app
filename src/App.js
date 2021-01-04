@@ -22,7 +22,7 @@ const App = () => {
       <Route 
         exact 
         path="/palette/:id" 
-        render={routeProps => 
+        render={ routeProps => 
           <Palette 
             palette={ generatePalette(
               findPalette(routeProps.match.params.id)) }
@@ -32,13 +32,17 @@ const App = () => {
       <Route
         exact 
         path="/palette/:paletteId/:colorId"
-        render= { () => <SingleColorPalette />}
+        render= { routeProps => (
+          <SingleColorPalette
+            colorId={ routeProps.match.params.colorId }
+            palette={ generatePalette(
+              findPalette(routeProps.match.params.paletteId)
+            )}
+          />
+        )}
       />
     </Switch>
-    // <div className="App">
-    //   <Palette palette={ generatePalette(seedColors[4]) }/>
-    // </div>
-  );
-}
+  )
+};
 
 export default App;

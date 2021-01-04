@@ -19,7 +19,8 @@ const Palette = (props) => {
             name={ color.name } 
             key={ color.id }
             id={ color.id }
-            paletteId={ id } />
+            paletteId={ id }
+            showLink={ true } />
     });
 
     return (

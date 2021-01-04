@@ -5,7 +5,7 @@ import useToggleState from "./hooks/useToggleState";
 import "./ColorBox.css"
 
 const ColorBox = (props) => {
-    const { name, background, paletteId, id } = props;
+    const { name, background, paletteId, id, showLink } = props;
     const [ copy, toggleCopy ] = useToggleState(false)
 
     const changeCopyState = () => {
@@ -31,9 +31,11 @@ const ColorBox = (props) => {
                     </div>
                     <button className="copy-button">Copy</button>
                 </div>
+                { showLink && (
                 <Link to={ `/palette/${paletteId}/${id}` } onClick={ (e) => e.stopPropagation() }>
                     <span className="see-more">More</span>    
                 </Link>
+                )}
             </div>
         </CopyToClipboard>
     )
