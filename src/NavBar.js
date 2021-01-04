@@ -12,7 +12,7 @@ import "./NavBar.css";
 
 
 const Navbar = (props) => {
-    const { level, setLevel } = props;
+    const { level, setLevel, multiColor } = props;
     const [format, setFormat] = useState("hex");
     const [open, toggleOpen] = useToggleState(false);
 
@@ -27,18 +27,20 @@ const Navbar = (props) => {
             <div className="logo">
                 <Link to="/">colorpickerapp🎨</Link>
             </div>
-            <div className="slider-container">
-                <span>Level: { level }</span>
-                <div className="slider">
-                    <Slider 
-                            default={ level } 
-                            min={ 100 } 
-                            max={ 900 } 
-                            step= { 100 } 
-                            onAfterChange={ setLevel }
-                    />
-                </div>
-            </div>
+                { multiColor && (
+                    <div className="slider-container">
+                        <span>Level: { level }</span>
+                        <div className="slider">
+                            <Slider 
+                                default={ level } 
+                                min={ 100 } 
+                                max={ 900 } 
+                                step= { 100 } 
+                                onAfterChange={ setLevel }
+                            />
+                        </div>
+                    </div>
+                )}
             <div className="select-container">
                 <Select value={ format } onChange={ changeFormat }>
                     <MenuItem value="hex">HEX - #ffffff</MenuItem>
