@@ -1,4 +1,4 @@
-.ColorBox {
+/* .ColorBox {
     width: 20%;
     height: 25%;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     position: relative;
     cursor: pointer;
     margin-bottom: -3.5px;
-}
+} */
 
 .back-button {
     width: 100px;
@@ -37,7 +37,7 @@
     transition: 0.7s;
 } */
 
-.box-content {
+/* .box-content {
     position: absolute;
     width: 100%;
     left: 0px;
@@ -47,34 +47,34 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 12px;
-}
+} */
 
-.light-text {
+/* .light-text {
     color: white;
 }
 
 .ColorBox .dark-text {
     color: black;
-}
+} */
 
-.copy-overlay {
+/* .copy-overlay {
     opacity: 0;
     z-index: 0;
     width: 100%;
     height: 100%;
     transition: transform 0.9s ease-in-out;
     transform: scale(0.1);
-}
-
+} */
+/* 
 .copy-overlay.show {
     opacity: 1;
     transform: scale(50);
     z-index: 10;
     position: absolute;
     
-}
+} */
 
-.copy-message {
+/* .copy-message {
     position: fixed;
     left: 0;
     right: 0;
@@ -88,17 +88,17 @@
     transform: scale(0.1);
     opacity: 0;
     color: white;
-}
+} */
 
-.copy-message.show {
+/* .copy-message.show {
     opacity: 1;
     transform: scale(1);
     z-index: 25;
     transition: all 0.4s ease-in-out;
     transition-delay: 0.3s;
-}
+} */
 
-.copy-message h1 {
+/* .copy-message h1 {
     width: 100%;
     font-weight: 400;
     text-align: center;
@@ -107,17 +107,17 @@
     background:rgba(255, 255, 255, 0.2);
     padding: 1rem;
     margin-bottom: 0;
-}
+} */
 
-.copy-message p {
+/* .copy-message p {
     font-size: 2rem;
     font-weight: 100;
-}  
+}   */
 
-.SingleColorPalette .ColorBox {
+/* .SingleColorPalette .ColorBox {
     height: 50%;
-}
+} */
 
-.ColorBox.go-back {
+/* .ColorBox.go-back {
     background-color: black;
-}
+} */
