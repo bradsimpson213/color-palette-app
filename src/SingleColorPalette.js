@@ -39,7 +39,7 @@ const SingleColorPalette = (props) => {
                     key={ color.name }
                     name={ color.name }
                     background={ color[format] }
-                    showLink={ false } 
+                    showFullPalette={ false } 
                 />
             ))}
                 <div className="go-back ColorBox"> 

@@ -8,7 +8,7 @@
     margin-bottom: -3.5px;
 }
 
-.copy-button, .back-button {
+.back-button {
     width: 100px;
     height: 30px;
     position: absolute;
@@ -28,14 +28,14 @@
     border: none;
 }
 
-.copy-button {
+/* .copy-button {
     opacity: 0;
 }
 
 .ColorBox:hover .copy-button {
     opacity: 1;
     transition: 0.7s;
-}
+} */
 
 .box-content {
     position: absolute;
@@ -55,20 +55,6 @@
 
 .ColorBox .dark-text {
     color: black;
-}
-
-.see-more {
-    background: rgba(255, 255, 255, 0.3);
-    position: absolute;
-    border: none;
-    right: 0px;
-    bottom: 0px;
-    color: white;
-    width: 60px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    text-transform: uppercase;
 }
 
 .copy-overlay {
