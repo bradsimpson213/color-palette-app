@@ -3,18 +3,8 @@ import ColorBox from "./ColorBox";
 import NavBar from "./NavBar";
 import PaletteFooter from "./PaletteFooter";
 import { withStyles } from  "@material-ui/styles";
-import "./Palette.css";
+import styles from "./styles/PaletteStyles";
 
-const styles = {
-    Palette: {
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column"
-    },
-    PaletteColors: {
-        height: "90%"
-    }
-};
 
 const Palette = (props) => {
     const [level, setLevel] = useState(500);
