@@ -1,5 +1,7 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState } from 'react';
+// Custom Component imports
+import DraggableColorBox from './DraggableColorBox';
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -61,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
       flexGrow: 1,
+      height: '100vh',
       padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -171,10 +174,10 @@ const NewPaletteForm = () => {
         })}
       >
         <div className={classes.drawerHeader} />
-        <ul>
+        
             { colors.map(color => (
-            <li style={{ backgroundColor: color }}>{color}</li>))}
-        </ul>
+            <DraggableColorBox color={ color } />))}
+        
       </main>
     </div>
   );
