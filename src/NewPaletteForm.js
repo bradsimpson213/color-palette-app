@@ -1,5 +1,5 @@
 // React imports
-import React from "react";
+import React, { useState } from "react";
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -80,6 +80,8 @@ const useStyles = makeStyles((theme) => ({
 const NewPaletteForm = () => {
     const classes = useStyles();
     const theme = useTheme();
+    const [currentColor, setCurrentColor] = useState('teal');
+    const [colors, setColors] = useState(["purple"]); 
     const [open, setOpen] = React.useState(false);  //refactor to useToggle
 
   const handleDrawerOpen = () => {
@@ -88,6 +90,10 @@ const NewPaletteForm = () => {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const addNewColor = () => {
+      setColors([...colors, currentColor]);
   };
 
   return (
@@ -147,12 +153,14 @@ const NewPaletteForm = () => {
             </Button>
         </div>
         <ChromePicker 
-            color="purple" 
-            // onChangeComplete={  } 
+            color={ currentColor } 
+            onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
         />
         <Button 
             variant="contained" 
             color="primary"
+            style={{ backgroundColor: currentColor }}
+            onClick={ addNewColor }
         >
             Add Color
         </Button>
@@ -163,7 +171,10 @@ const NewPaletteForm = () => {
         })}
       >
         <div className={classes.drawerHeader} />
-       
+        <ul>
+            { colors.map(color => (
+            <li style={{ backgroundColor: color }}>{color}</li>))}
+        </ul>
       </main>
     </div>
   );
