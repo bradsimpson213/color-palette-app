@@ -16,6 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
       flexGrow: 1,
-      height: '100vh',
+      height: 'calc(100vh - 64px)',
       padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -85,6 +86,7 @@ const NewPaletteForm = () => {
     const theme = useTheme();
     const [currentColor, setCurrentColor] = useState('teal');
     const [colors, setColors] = useState(["purple"]); 
+    const [colorName, setColorName] = useState('');
     const [open, setOpen] = React.useState(false);  //refactor to useToggle
 
   const handleDrawerOpen = () => {
@@ -159,14 +161,21 @@ const NewPaletteForm = () => {
             color={ currentColor } 
             onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
         />
-        <Button 
-            variant="contained" 
-            color="primary"
-            style={{ backgroundColor: currentColor }}
-            onClick={ addNewColor }
-        >
-            Add Color
-        </Button>
+        <ValidatorForm onSubmit={ addNewColor }>
+            <TextValidator 
+                value={ colorName }
+                onChange={ e => setColorName(e.target.value)}
+            />
+            <Button 
+                variant="contained"
+                type="submit" 
+                color="primary"
+                style={{ backgroundColor: currentColor }}
+            >
+                Add Color
+            </Button>
+        </ValidatorForm>
+     
       </Drawer>
       <main
         className={clsx(classes.content, {
