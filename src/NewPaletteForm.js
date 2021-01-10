@@ -21,8 +21,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { getThemeProps } from '@material-ui/styles';
-import seedColors from './seedColors';
+
 
 const drawerWidth = 400;
 
@@ -91,19 +90,24 @@ const NewPaletteForm = (props) => {
     const [currentColor, setCurrentColor] = useState('teal');
     const [colors, setColors] = useState([]); 
     const [colorName, setColorName] = useState('');
+    const [colorPaletteName, setColorPaletteName] = useState();
     const [open, setOpen] = React.useState(false);  //refactor to useToggle
 
 // Custom form validator not working below
     // useEffect( ()=> {
-    //     ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
-    //        colors.every( 
-    //          ({name}) => name.toLowerCase() !== value.toLowerCase())
+      //   ValidatorForm.addValidationRule('ColorNameUnique', (value) => {
+      //      colors.every( 
+      //        ({name}) => name.toLowerCase() !== value.toLowerCase())
+      //   });
+      //   ValidatorForm.addValidationRule('ColorUnique', (value) => {
+      //     colors.every( 
+      //       ({color}) => color !== value )
+      //  });
+    //     ValidatorForm.addValidationRule('PaletteUnique', (value) => {
+    //       props.palettes.every( 
+    //         ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
     //     });
-    //     ValidatorForm.addValidationRule('isColorUnique', (value) => {
-    //       colors.every( 
-    //         ({color}) => color !== value )
-    //    });
-    //     // return () => ValidatorForm.removeValidationRule('isColorNameUnique');
+    //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
     // },[])
     
     const handleDrawerOpen = () => {
@@ -124,10 +128,9 @@ const NewPaletteForm = (props) => {
     };
 
     const handleSubmit = () => {
-      const newName = "New Test Palette"
       const newPalette = {
-        paletteName: newName,
-        id: newName.toLowerCase().replace(/ /g, "-"),
+        paletteName: colorPaletteName,
+        id: colorPaletteName.toLowerCase().replace(/ /g, "-"),
         colors: colors
       };
       props.savePalette(newPalette);
@@ -157,13 +160,26 @@ const NewPaletteForm = (props) => {
           <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
-          <Button 
-            variant="contained" 
-            color="primary"
-            onClick={ handleSubmit }
+          <ValidatorForm 
+            onSubmit={ handleSubmit } 
+            useRef="form"
+            onError={ errors => console.log(errors) }
           >
-            Save Palette
-          </Button>
+            <TextValidator 
+                value={ colorPaletteName }
+                label="Palette Name"
+                onChange={ e => setColorPaletteName(e.target.value)}
+                validators={['required']}
+                errorMessages={['this field is required']}
+            />
+            <Button 
+              variant="contained" 
+              color="primary"
+              type="submit"
+            >
+              Save Palette
+            </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer

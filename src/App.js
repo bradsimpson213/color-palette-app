@@ -25,7 +25,7 @@ const App = () => {
       <Route
         exact
         path="/palette/new"
-        render={ ()=> <NewPaletteForm savePalette={ savePalette }/>} 
+        render={ ()=> <NewPaletteForm savePalette={ savePalette } palettes={ palettes }/>} 
       />
       <Route 
         exact 
