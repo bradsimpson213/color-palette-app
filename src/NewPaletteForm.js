@@ -1,5 +1,6 @@
 // React imports
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 // Custom Component imports
 import DraggableColorBox from './DraggableColorBox';
 // Material Component imports
@@ -20,6 +21,8 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { getThemeProps } from '@material-ui/styles';
+import seedColors from './seedColors';
 
 const drawerWidth = 400;
 
@@ -81,9 +84,10 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const NewPaletteForm = () => {
+const NewPaletteForm = (props) => {
     const classes = useStyles();
     const theme = useTheme();
+    let history= useHistory();
     const [currentColor, setCurrentColor] = useState('teal');
     const [colors, setColors] = useState([]); 
     const [colorName, setColorName] = useState('');
@@ -119,11 +123,23 @@ const NewPaletteForm = () => {
         setColorName('');
     };
 
+    const handleSubmit = () => {
+      const newName = "New Test Palette"
+      const newPalette = {
+        paletteName: newName,
+        id: newName.toLowerCase().replace(/ /g, "-"),
+        colors: colors
+      };
+      props.savePalette(newPalette);
+      history.push("/");
+    };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
+        color="default"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -141,6 +157,13 @@ const NewPaletteForm = () => {
           <Typography variant="h6" noWrap>
             Persistent drawer
           </Typography>
+          <Button 
+            variant="contained" 
+            color="primary"
+            onClick={ handleSubmit }
+          >
+            Save Palette
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
