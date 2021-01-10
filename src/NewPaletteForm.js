@@ -1,5 +1,5 @@
 // React imports
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 // Custom Component imports
 import DraggableColorBox from './DraggableColorBox';
 // Material Component imports
@@ -89,14 +89,18 @@ const NewPaletteForm = () => {
     const [colorName, setColorName] = useState('');
     const [open, setOpen] = React.useState(false);  //refactor to useToggle
 
-    useEffect( ()=> {
-        ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
-           colors.every(
-               ({ name }) => name.toLowerCase() !== value.toLowerCase()
-           )
-        });
-        return () => ValidatorForm.removeValidationRule('isColorNameUnique');
-    }, [])
+// Custom form validator not working below
+    // useEffect( ()=> {
+    //     ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
+    //        colors.every( 
+    //          ({name}) => name.toLowerCase() !== value.toLowerCase())
+    //     });
+    //     ValidatorForm.addValidationRule('isColorUnique', (value) => {
+    //       colors.every( 
+    //         ({color}) => color !== value )
+    //    });
+    //     // return () => ValidatorForm.removeValidationRule('isColorNameUnique');
+    // },[])
     
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -112,6 +116,7 @@ const NewPaletteForm = () => {
             name: colorName
         };
         setColors([...colors, newColor]);
+        setColorName('');
     };
 
   return (
@@ -174,12 +179,16 @@ const NewPaletteForm = () => {
             color={ currentColor } 
             onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
         />
-        <ValidatorForm onSubmit={ addNewColor }>
+        <ValidatorForm 
+          onSubmit={ addNewColor } 
+          useRef="form"
+          onError={ errors => console.log(errors) }
+        >
             <TextValidator 
                 value={ colorName }
                 onChange={ e => setColorName(e.target.value)}
-                validators={['isColorNameUnique']}
-                errorMessages={["Color name must be unique"]}
+                validators={['required']}
+                    errorMessages={['this field is required']}
             />
             <Button 
                 variant="contained"
