@@ -254,7 +254,7 @@ const NewPaletteForm = (props) => {
         
             { colors.map(color => (
             <DraggableColorBox
-              id={ uuid() }
+              key={ uuid() }
               color={ color } 
               handleDelete={ () => handleDelete(color.color) }
             />))}        
