@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Custom Component imports
 import DraggableColorBox from './DraggableColorBox';
 // Material Component imports
@@ -85,21 +85,34 @@ const NewPaletteForm = () => {
     const classes = useStyles();
     const theme = useTheme();
     const [currentColor, setCurrentColor] = useState('teal');
-    const [colors, setColors] = useState(["purple"]); 
+    const [colors, setColors] = useState([]); 
     const [colorName, setColorName] = useState('');
     const [open, setOpen] = React.useState(false);  //refactor to useToggle
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    useEffect( ()=> {
+        ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
+           colors.every(
+               ({ name }) => name.toLowerCase() !== value.toLowerCase()
+           )
+        });
+        return () => ValidatorForm.removeValidationRule('isColorNameUnique');
+    }, [])
+    
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
 
-  const addNewColor = () => {
-      setColors([...colors, currentColor]);
-  };
+    const addNewColor = () => {
+        const newColor = {
+            color: currentColor,
+            name: colorName
+        };
+        setColors([...colors, newColor]);
+    };
 
   return (
     <div className={classes.root}>
@@ -165,6 +178,8 @@ const NewPaletteForm = () => {
             <TextValidator 
                 value={ colorName }
                 onChange={ e => setColorName(e.target.value)}
+                validators={['isColorNameUnique']}
+                errorMessages={["Color name must be unique"]}
             />
             <Button 
                 variant="contained"
