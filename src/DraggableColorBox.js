@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 
 const DraggableColorBox = (props) => {
     const classes = useStyles()
-    const { color } = props;
+    const { color, handleDelete } = props;
     return (
         <div 
             className={ classes.root } 
@@ -47,7 +47,9 @@ const DraggableColorBox = (props) => {
         >
             <div className={ classes.boxContent }>
                 <span>{ color.name }</span>
-                <DeleteIcon className= { classes.deleteIcon } />
+                <DeleteIcon 
+                    className= { classes.deleteIcon }
+                    onClick={ handleDelete } />
             </div>
        
         </div>

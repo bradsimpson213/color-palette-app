@@ -19,6 +19,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
+// Utility imports
+import { v4 as uuid } from 'uuid';
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -111,20 +113,20 @@ const NewPaletteForm = (props) => {
     // },[])
     
     const handleDrawerOpen = () => {
-        setOpen(true);
+      setOpen(true);
     };
 
     const handleDrawerClose = () => {
-        setOpen(false);
+      setOpen(false);
     };
 
     const addNewColor = () => {
-        const newColor = {
-            color: currentColor,
-            name: colorName
-        };
-        setColors([...colors, newColor]);
-        setColorName('');
+      const newColor = {
+          color: currentColor,
+          name: colorName
+      };
+      setColors([...colors, newColor]);
+      setColorName('');
     };
 
     const handleSubmit = () => {
@@ -135,6 +137,11 @@ const NewPaletteForm = (props) => {
       };
       props.savePalette(newPalette);
       history.push("/");
+    };
+
+    const handleDelete = (colorName) => {
+      const newColors = colors.filter( color => color.color !== colorName);
+      setColors(newColors);
     };
 
   return (
@@ -162,7 +169,6 @@ const NewPaletteForm = (props) => {
           </Typography>
           <ValidatorForm 
             onSubmit={ handleSubmit } 
-            useRef="form"
             onError={ errors => console.log(errors) }
           >
             <TextValidator 
@@ -220,7 +226,6 @@ const NewPaletteForm = (props) => {
         />
         <ValidatorForm 
           onSubmit={ addNewColor } 
-          useRef="form"
           onError={ errors => console.log(errors) }
         >
             <TextValidator 
@@ -248,8 +253,11 @@ const NewPaletteForm = (props) => {
         <div className={classes.drawerHeader} />
         
             { colors.map(color => (
-            <DraggableColorBox color={ color } />))}
-        
+            <DraggableColorBox
+              id={ uuid() }
+              color={ color } 
+              handleDelete={ () => handleDelete(color.color) }
+            />))}        
       </main>
     </div>
   );
