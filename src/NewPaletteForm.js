@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 // Custom Component imports
+import useToggleState from "./hooks/useToggleState";
 import DraggableColorBox from './DraggableColorBox';
 // Material Component imports
 import clsx from 'clsx';
@@ -93,7 +94,7 @@ const NewPaletteForm = (props) => {
     const [colors, setColors] = useState([]); 
     const [colorName, setColorName] = useState('');
     const [colorPaletteName, setColorPaletteName] = useState();
-    const [open, setOpen] = React.useState(false);  //refactor to useToggle
+    const [ drawerStatus, toggleDrawer] = useToggleState(false)
 
 // Custom form validator not working below
     // useEffect( ()=> {
@@ -112,14 +113,6 @@ const NewPaletteForm = (props) => {
     //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
     // },[])
     
-    const handleDrawerOpen = () => {
-      setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
-
     const addNewColor = () => {
       const newColor = {
           color: currentColor,
@@ -151,16 +144,16 @@ const NewPaletteForm = (props) => {
         position="fixed"
         color="default"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.appBarShift]: drawerStatus,
         })}
       >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={ toggleDrawer }
             edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, drawerStatus && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
@@ -192,13 +185,13 @@ const NewPaletteForm = (props) => {
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={ drawerStatus }
         classes={{
           paper: classes.drawerPaper,
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={ toggleDrawer }>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
@@ -247,7 +240,7 @@ const NewPaletteForm = (props) => {
       </Drawer>
       <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          [classes.contentShift]: drawerStatus,
         })}
       >
         <div className={classes.drawerHeader} />
