@@ -87,15 +87,17 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const NewPaletteForm = (props) => {
-    const classes = useStyles();
-    const theme = useTheme();
-    let history= useHistory();
-    const [currentColor, setCurrentColor] = useState('teal');
-    const [colors, setColors] = useState([]); 
-    const [colorName, setColorName] = useState('');
-    const [colorPaletteName, setColorPaletteName] = useState();
-    const [ drawerStatus, toggleDrawer] = useToggleState(false)
 
+  // const defaultColors= [props.palettes[0].colors];
+  const classes = useStyles();
+  const theme = useTheme();
+  let history= useHistory();
+  const [currentColor, setCurrentColor] = useState('teal');
+  const [colors, setColors] = useState(props.palettes[0].colors); 
+  const [colorName, setColorName] = useState('');
+  const [colorPaletteName, setColorPaletteName] = useState();
+  const [ drawerStatus, toggleDrawer] = useToggleState(false)
+  console.log(colors);
 // Custom form validator not working below
     // useEffect( ()=> {
       //   ValidatorForm.addValidationRule('ColorNameUnique', (value) => {
@@ -139,6 +141,10 @@ const NewPaletteForm = (props) => {
 
     const onSortEnd = ({oldIndex, newIndex}) => {
       setColors(( colors ) => (arrayMove(colors, oldIndex, newIndex)));
+    };
+
+    const clearColors = () => {
+      setColors([]);
     };
 
   return (
@@ -207,6 +213,7 @@ const NewPaletteForm = (props) => {
             <Button 
                 variant="contained" 
                 color="secondary"
+                onclick={ clearColors }
             >
                 Clear Palette
             </Button>
