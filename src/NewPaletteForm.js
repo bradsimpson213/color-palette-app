@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import useToggleState from "./hooks/useToggleState";
 import DraggableColorList from './DraggableColorList';
 // Drag and Drop HOC imports
-import { arrayMove } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -140,7 +140,8 @@ const NewPaletteForm = (props) => {
     };
 
     const onSortEnd = ({oldIndex, newIndex}) => {
-      setColors(( colors ) => (arrayMove(colors, oldIndex, newIndex)));
+      const newColors = arrayMove(colors, oldIndex, newIndex);
+      setColors(newColors)
     };
 
     const clearColors = () => {
@@ -213,7 +214,7 @@ const NewPaletteForm = (props) => {
             <Button 
                 variant="contained" 
                 color="secondary"
-                onclick={ clearColors }
+                onClick={ clearColors }
             >
                 Clear Palette
             </Button>
