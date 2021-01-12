@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 // Custom Component imports
 import useToggleState from "./hooks/useToggleState";
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,8 +20,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
-// Utility imports
-import { v4 as uuid } from 'uuid';
+
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -244,13 +243,8 @@ const NewPaletteForm = (props) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        
-            { colors.map(color => (
-            <DraggableColorBox
-              key={ uuid() }
-              color={ color } 
-              handleDelete={ () => handleDelete(color.color) }
-            />))}        
+          <DraggableColorList colors={ colors } handleDelete={ handleDelete } />
+            
       </main>
     </div>
   );
