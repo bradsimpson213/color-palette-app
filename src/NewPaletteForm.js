@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 // Custom Component imports
 import useToggleState from "./hooks/useToggleState";
 import DraggableColorList from './DraggableColorList';
+// Drag and Drop HOC imports
+import { arrayMove } from 'react-sortable-hoc';
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,7 +22,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
-
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -136,6 +137,10 @@ const NewPaletteForm = (props) => {
       setColors(newColors);
     };
 
+    const onSortEnd = ({oldIndex, newIndex}) => {
+      setColors(( colors ) => (arrayMove(colors, oldIndex, newIndex)));
+    };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -243,7 +248,12 @@ const NewPaletteForm = (props) => {
         })}
       >
         <div className={classes.drawerHeader} />
-          <DraggableColorList colors={ colors } handleDelete={ handleDelete } />
+          <DraggableColorList 
+            colors={ colors } 
+            handleDelete={ handleDelete }
+            axis="xy"
+            onSortEnd={ onSortEnd } 
+          />
             
       </main>
     </div>

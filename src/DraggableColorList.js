@@ -10,9 +10,10 @@ import { v4 as uuid } from 'uuid';
 const DraggableColorList = ({ colors, handleDelete }) => {
     return (
         <div style={{ height: "100%" }} >
-            { colors.map(color => (
+            { colors.map((color, index) => (
             <DraggableColorBox
               key={ uuid() }
+              index= { index }
               color={ color } 
               handleDelete={ () => handleDelete(color.color) }
             />))}      
