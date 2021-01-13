@@ -1,22 +1,19 @@
 // React imports
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 // Custom Component imports
 import useToggleState from "./hooks/useToggleState";
-import DraggableColorList from './DraggableColorList';
+import DraggableColorList from "./DraggableColorList";
+import PaletteFormNav from "./PaletteFormNav";
 // Drag and Drop HOC imports
 import arrayMove from 'array-move';
 // Material Component imports
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
@@ -95,27 +92,11 @@ const NewPaletteForm = (props) => {
   const [currentColor, setCurrentColor] = useState('teal');
   const [colors, setColors] = useState(props.palettes[0].colors); 
   const [colorName, setColorName] = useState('');
-  const [colorPaletteName, setColorPaletteName] = useState();
   const [ drawerStatus, toggleDrawer] = useToggleState(false)
   const maxColors = 20;
   const fullPalette = colors.length >= maxColors;
 
-// Custom form validator not working below
-    // useEffect( ()=> {
-      //   ValidatorForm.addValidationRule('ColorNameUnique', (value) => {
-      //      colors.every( 
-      //        ({name}) => name.toLowerCase() !== value.toLowerCase())
-      //   });
-      //   ValidatorForm.addValidationRule('ColorUnique', (value) => {
-      //     colors.every( 
-      //       ({color}) => color !== value )
-      //  });
-    //     ValidatorForm.addValidationRule('PaletteUnique', (value) => {
-    //       props.palettes.every( 
-    //         ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
-    //     });
-    //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
-    // },[])
+//
     
     const addNewColor = () => {
       const newColor = {
@@ -126,10 +107,10 @@ const NewPaletteForm = (props) => {
       setColorName('');
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (newPaletteName) => {
       const newPalette = {
-        paletteName: colorPaletteName,
-        id: colorPaletteName.toLowerCase().replace(/ /g, "-"),
+        paletteName: newPaletteName,
+        id: newPaletteName.toLowerCase().replace(/ /g, "-"),
         colors: colors
       };
       props.savePalette(newPalette);
@@ -160,48 +141,13 @@ const NewPaletteForm = (props) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        color="default"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: drawerStatus,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={ toggleDrawer }
-            edge="start"
-            className={clsx(classes.menuButton, drawerStatus && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
-          <ValidatorForm 
-            onSubmit={ handleSubmit } 
-            onError={ errors => console.log(errors) }
-          >
-            <TextValidator 
-                value={ colorPaletteName }
-                label="Palette Name"
-                onChange={ e => setColorPaletteName(e.target.value)}
-                validators={['required']}
-                errorMessages={['this field is required']}
-            />
-            <Button 
-              variant="contained" 
-              color="primary"
-              type="submit"
-            >
-              Save Palette
-            </Button>
-          </ValidatorForm>
-        </Toolbar>
-      </AppBar>
+     <PaletteFormNav
+      classes={ classes }
+      palettes={ palettes }
+      handleSubmit={ handleSubmit }
+      drawerStatus={ drawerStatus }
+      toggleDrawer={ toggleDrawer }
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
