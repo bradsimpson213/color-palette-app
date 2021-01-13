@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         marginBottom: "-3.5px",
         "&:hover svg": {
             color: "white",
-            transform: 'scale(1.5)'
+            transform: 'scale(1.5)',
         }
     },
     boxContent: {
@@ -51,7 +51,7 @@ const DraggableColorBox = (props) => {
                 <span>{ color.name }</span>
                 <DeleteIcon 
                     className= { classes.deleteIcon }
-                    onClick={ handleDelete } />
+                    onClick={ () => handleDelete(color.color) } />
             </div>
        
         </div>

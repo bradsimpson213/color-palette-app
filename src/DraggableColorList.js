@@ -15,7 +15,7 @@ const DraggableColorList = ({ colors, handleDelete }) => {
               key={ uuid() }
               index= { index }
               color={ color } 
-              handleDelete={ () => handleDelete(color.color) }
+              handleDelete={ handleDelete }
             />))}      
         </div>
     )

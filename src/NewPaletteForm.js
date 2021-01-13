@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NewPaletteForm = (props) => {
 
-  // const defaultColors= [props.palettes[0].colors];
+  const { palettes } = props;
   const classes = useStyles();
   const theme = useTheme();
   let history= useHistory();
@@ -97,7 +97,7 @@ const NewPaletteForm = (props) => {
   const [colorName, setColorName] = useState('');
   const [colorPaletteName, setColorPaletteName] = useState();
   const [ drawerStatus, toggleDrawer] = useToggleState(false)
-  console.log(colors);
+
 // Custom form validator not working below
     // useEffect( ()=> {
       //   ValidatorForm.addValidationRule('ColorNameUnique', (value) => {
@@ -137,6 +137,7 @@ const NewPaletteForm = (props) => {
     const handleDelete = (colorName) => {
       const newColors = colors.filter( color => color.color !== colorName);
       setColors(newColors);
+      alert(`${colorName} was deleted!`);
     };
 
     const onSortEnd = ({oldIndex, newIndex}) => {
@@ -146,6 +147,13 @@ const NewPaletteForm = (props) => {
 
     const clearColors = () => {
       setColors([]);
+    };
+
+    const addRandom = () => {
+      const allColors = palettes.map(palette => palette.colors).flat();
+      const randomNumber = Math.floor(Math.random() * allColors.length);
+      const randomColor = allColors[randomNumber];
+      setColors([...colors, randomColor]);
     };
 
   return (
@@ -221,6 +229,7 @@ const NewPaletteForm = (props) => {
             <Button 
                 variant="contained" 
                 color="primary"
+                onClick={ addRandom }
             >
                 Random Color
             </Button>
