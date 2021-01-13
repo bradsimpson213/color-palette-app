@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const NewPaletteForm = (props) => {
-
+  
   const { palettes } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -97,6 +97,8 @@ const NewPaletteForm = (props) => {
   const [colorName, setColorName] = useState('');
   const [colorPaletteName, setColorPaletteName] = useState();
   const [ drawerStatus, toggleDrawer] = useToggleState(false)
+  const maxColors = 20;
+  const fullPalette = colors.length >= maxColors;
 
 // Custom form validator not working below
     // useEffect( ()=> {
@@ -230,6 +232,7 @@ const NewPaletteForm = (props) => {
                 variant="contained" 
                 color="primary"
                 onClick={ addRandom }
+                disabled={ fullPalette }
             >
                 Random Color
             </Button>
@@ -252,9 +255,10 @@ const NewPaletteForm = (props) => {
                 variant="contained"
                 type="submit" 
                 color="primary"
-                style={{ backgroundColor: currentColor }}
+                style={{ backgroundColor: fullPalette ? "gray" : currentColor }}
+                disabled={ fullPalette }
             >
-                Add Color
+                { fullPalette ? "Palette Full" : "Add Color" }
             </Button>
         </ValidatorForm>
      
