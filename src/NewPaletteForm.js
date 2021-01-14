@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import useToggleState from "./hooks/useToggleState";
 import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
+import ColorPickerForm from "./ColorPickerForm";
 // Drag and Drop HOC imports
 import arrayMove from 'array-move';
 // Material Component imports
@@ -183,31 +184,7 @@ const NewPaletteForm = (props) => {
                 Random Color
             </Button>
         </div>
-        <ChromePicker 
-            color={ currentColor } 
-            onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
-        />
-        <ValidatorForm 
-          onSubmit={ addNewColor } 
-          onError={ errors => console.log(errors) }
-        >
-            <TextValidator 
-                value={ colorName }
-                onChange={ e => setColorName(e.target.value)}
-                validators={['required']}
-                    errorMessages={['this field is required']}
-            />
-            <Button 
-                variant="contained"
-                type="submit" 
-                color="primary"
-                style={{ backgroundColor: fullPalette ? "gray" : currentColor }}
-                disabled={ fullPalette }
-            >
-                { fullPalette ? "Palette Full" : "Add Color" }
-            </Button>
-        </ValidatorForm>
-     
+        <ColorPickerForm fullPalette={ fullPalette } />     
       </Drawer>
       <main
         className={clsx(classes.content, {
