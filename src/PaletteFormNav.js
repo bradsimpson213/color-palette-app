@@ -12,11 +12,45 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+// Style imports
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 
+const drawerWidth = 400;
+
+const useStyles = makeStyles((theme) => ({
+    root:{
+        display: 'flex'
+    },
+    appBar: {
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        height: '64px'
+    },
+    appBarShift: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    navButtons: {
+
+    }
+}));
 
 const PaletteFormNav = (props) => {
-    const { classes, drawerStatus, toggleDrawer, handleSubmit } = props;
+    const classes = useStyles();
+    const theme = useTheme();
+    const { drawerStatus, toggleDrawer, handleSubmit } = props;
     // const [ drawerStatus, toggleDrawer] = useToggleState(false)
     const [colorPaletteName, setColorPaletteName] = useState();
 
@@ -50,36 +84,38 @@ const PaletteFormNav = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Persistent drawer
+                        Create A Palette
                     </Typography>
-                    <ValidatorForm 
-                        onSubmit={ () => handleSubmit(colorPaletteName) } 
-                        onError={ errors => console.log(errors) }
-                    >
-                        <TextValidator 
-                            value={ colorPaletteName }
-                            label="Palette Name"
-                            onChange={ e => setColorPaletteName(e.target.value)}
-                            validators={['required']}
-                            errorMessages={['this field is required']}
-                        />
-                        <Button 
-                        variant="contained" 
-                        color="primary"
-                        type="submit"
-                        >
-                        Save Palette
-                        </Button>
-                        <Link to="/">
-                            <Button 
-                                variant="contained" 
-                                color="secondary"
-                            >
-                                Go Back
-                            </Button>
-                        </Link>
-                    </ValidatorForm>
                     </Toolbar>
+                    <div className={ classes.navButtons }>
+                        <ValidatorForm 
+                            onSubmit={ () => handleSubmit(colorPaletteName) } 
+                            onError={ errors => console.log(errors) }
+                        >
+                            <TextValidator 
+                                value={ colorPaletteName }
+                                label="Palette Name"
+                                onChange={ e => setColorPaletteName(e.target.value)}
+                                validators={['required']}
+                                errorMessages={['this field is required']}
+                            />
+                            <Button 
+                            variant="contained" 
+                            color="primary"
+                            type="submit"
+                            >
+                            Save Palette
+                            </Button>
+                        </ValidatorForm>
+                        <Link to="/">
+                                <Button 
+                                    variant="contained" 
+                                    color="secondary"
+                                >
+                                    Go Back
+                                </Button>
+                        </Link>
+                    </div>
                 </AppBar>
         </div>
     )
