@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PaletteFormNav = (props) => {
     const classes = useStyles();
-    const { drawerStatus, toggleDrawer, handleSubmit } = props;
+    const { palettes, drawerStatus, toggleDrawer, handleSubmit } = props;
     // const [ drawerStatus, toggleDrawer] = useToggleState(false)
 
     return(
@@ -78,7 +78,9 @@ const PaletteFormNav = (props) => {
                     </Toolbar>
                     <div className={ classes.navButtons }>
          
-                        <PaletteMetaForm handleSubmit={ handleSubmit } />
+                        <PaletteMetaForm 
+                            handleSubmit={ handleSubmit }
+                            palettes={ palettes } />
                         <Link to="/">
                                 <Button 
                                     variant="contained" 

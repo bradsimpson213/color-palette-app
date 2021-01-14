@@ -17,7 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const PaletteMetaForm = (props) => {
-  const { handleSubmit } = props;  
+  const { handleSubmit, palettes } = props;  
   const [open, toggleOpen] = useToggleState(false);
   const [colorPaletteName, setColorPaletteName] = useState();
     //Custom form validator not working below
