@@ -28,6 +28,7 @@ const ColorPickerForm = (props) => {
             name: colorName
         }
         addNewColor(newColor)
+        setColorName("");
     }
     return (
         <div>
