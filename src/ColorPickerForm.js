@@ -6,9 +6,32 @@ import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 // Style imports
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+    root: {
+        width: '100%'
+    },
+    picker: {
+        width: '100% !important',
+        marginTop: '2rem'
+    },
+    addColor: {
+        width: '100%',
+        padding: '1rem',
+        marginTop: '1rem',
+        fontSize: '2rem'
+    },
+    colorNameInput: {
+        width: '100%',
+        height: '70px',
+
+    }
+});
 
 const ColorPickerForm = (props) => {
+    const classes = useStyles();
     const { fullPalette, addNewColor } = props;
     const [currentColor, setCurrentColor] = useState('teal');
     const [colorName, setColorName] = useState('');
@@ -31,22 +54,28 @@ const ColorPickerForm = (props) => {
         setColorName("");
     }
     return (
-        <div>
+        <div className={ classes.root }>
             <ChromePicker 
-            color={ currentColor } 
-            onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
+                color={ currentColor } 
+                onChangeComplete={ newColor => setCurrentColor(newColor.hex) }
+                className={ classes.picker } 
             />
             <ValidatorForm 
-            onSubmit={ makeNewColor } 
-            onError={ errors => console.log(errors) }
+                onSubmit={ makeNewColor } 
+                onError={ errors => console.log(errors) }
             >
                 <TextValidator 
                     value={ colorName }
+                    placeholder="Color Name"
+                    className={ classes.colorNameInput }
+                    variant="filled"
+                    margin="normal"
                     onChange={ e => setColorName(e.target.value)}
                     validators={['required']}
-                        errorMessages={['this field is required']}
+                    errorMessages={['this field is required']}
                 />
-                <Button 
+                <Button
+                    className={ classes.addColor } 
                     variant="contained"
                     type="submit" 
                     color="primary"

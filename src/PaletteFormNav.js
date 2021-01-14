@@ -13,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Style imports
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 const drawerWidth = 400;
@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 
 const PaletteFormNav = (props) => {
     const classes = useStyles();
-    const theme = useTheme();
     const { drawerStatus, toggleDrawer, handleSubmit } = props;
     // const [ drawerStatus, toggleDrawer] = useToggleState(false)
     const [colorPaletteName, setColorPaletteName] = useState();
