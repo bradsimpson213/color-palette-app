@@ -1,21 +1,7 @@
 // React imports
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-// Custom Component imports
-import useToggleState from "./hooks/useToggleState";
-import DraggableColorList from "./DraggableColorList";
-import PaletteFormNav from "./PaletteFormNav";
-// Drag and Drop HOC imports
-import arrayMove from 'array-move';
 // Material Component imports
-import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // Other imported components
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
@@ -23,9 +9,26 @@ import { ChromePicker } from 'react-color';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 const ColorPickerForm = (props) => {
-    const { fullPalette } = props;
+    const { fullPalette, addNewColor } = props;
     const [currentColor, setCurrentColor] = useState('teal');
+    const [colorName, setColorName] = useState('');
 
+    //Custom form validator not working below (and need update to colorName/color)
+    // useEffect( ()=> {
+    //     ValidatorForm.addValidationRule('PaletteUnique', (value) => {
+    //       props.palettes.every( 
+    //         ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
+    //     });
+    //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
+    // },[])
+
+    const makeNewColor = () => {
+        const newColor = {
+            color: currentColor,
+            name: colorName
+        }
+        addNewColor(newColor)
+    }
     return (
         <div>
             <ChromePicker 
@@ -33,7 +36,7 @@ const ColorPickerForm = (props) => {
             onChangeComplete={ newColor => setCurrentColor(newColor.hex) } 
             />
             <ValidatorForm 
-            onSubmit={ addNewColor } 
+            onSubmit={ makeNewColor } 
             onError={ errors => console.log(errors) }
             >
                 <TextValidator 

@@ -17,9 +17,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// Other imported components
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { ChromePicker } from 'react-color';
 // Style imports
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
@@ -90,55 +87,46 @@ const NewPaletteForm = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   let history= useHistory();
-  const [currentColor, setCurrentColor] = useState('teal');
   const [colors, setColors] = useState(props.palettes[0].colors); 
-  const [colorName, setColorName] = useState('');
   const [ drawerStatus, toggleDrawer] = useToggleState(false)
   const maxColors = 20;
   const fullPalette = colors.length >= maxColors;
 
-//
-    
-    const addNewColor = () => {
-      const newColor = {
-          color: currentColor,
-          name: colorName
-      };
-      setColors([...colors, newColor]);
-      setColorName('');
-    };
+  const addNewColor = (newColor) => {
+    setColors([...colors, newColor]);
+  };
 
-    const handleSubmit = (newPaletteName) => {
-      const newPalette = {
-        paletteName: newPaletteName,
-        id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-        colors: colors
-      };
-      props.savePalette(newPalette);
-      history.push("/");
+  const handleSubmit = (newPaletteName) => {
+    const newPalette = {
+      paletteName: newPaletteName,
+      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
+      colors: colors
     };
+    props.savePalette(newPalette);
+    history.push("/");
+  };
 
-    const handleDelete = (colorName) => {
-      const newColors = colors.filter( color => color.color !== colorName);
-      setColors(newColors);
-      alert(`${colorName} was deleted!`);
-    };
+  const handleDelete = (colorName) => {
+    const newColors = colors.filter( color => color.color !== colorName);
+    setColors(newColors);
+    alert(`${colorName} was deleted!`);
+  };
 
-    const onSortEnd = ({oldIndex, newIndex}) => {
-      const newColors = arrayMove(colors, oldIndex, newIndex);
-      setColors(newColors)
-    };
+  const onSortEnd = ({oldIndex, newIndex}) => {
+    const newColors = arrayMove(colors, oldIndex, newIndex);
+    setColors(newColors)
+  };
 
-    const clearColors = () => {
-      setColors([]);
-    };
+  const clearColors = () => {
+    setColors([]);
+  };
 
-    const addRandom = () => {
-      const allColors = palettes.map(palette => palette.colors).flat();
-      const randomNumber = Math.floor(Math.random() * allColors.length);
-      const randomColor = allColors[randomNumber];
-      setColors([...colors, randomColor]);
-    };
+  const addRandom = () => {
+    const allColors = palettes.map(palette => palette.colors).flat();
+    const randomNumber = Math.floor(Math.random() * allColors.length);
+    const randomColor = allColors[randomNumber];
+    setColors([...colors, randomColor]);
+  };
 
   return (
     <div className={classes.root}>
@@ -184,7 +172,10 @@ const NewPaletteForm = (props) => {
                 Random Color
             </Button>
         </div>
-        <ColorPickerForm fullPalette={ fullPalette } />     
+        <ColorPickerForm 
+          fullPalette={ fullPalette }
+          addNewColor={ addNewColor }
+        />     
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -198,7 +189,6 @@ const NewPaletteForm = (props) => {
             axis="xy"
             onSortEnd={ onSortEnd } 
           />
-            
       </main>
     </div>
   );
