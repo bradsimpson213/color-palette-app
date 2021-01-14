@@ -1,6 +1,8 @@
 // React imports
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+// Custom Component imports
+import PaletteMetaForm from "./PaletteMetaForm";
 // Material Component imports
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,8 +12,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// Other imported components
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // Style imports
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -51,16 +51,6 @@ const PaletteFormNav = (props) => {
     const classes = useStyles();
     const { drawerStatus, toggleDrawer, handleSubmit } = props;
     // const [ drawerStatus, toggleDrawer] = useToggleState(false)
-    const [colorPaletteName, setColorPaletteName] = useState();
-
-    //Custom form validator not working below
-    // useEffect( ()=> {
-    //     ValidatorForm.addValidationRule('PaletteUnique', (value) => {
-    //       props.palettes.every( 
-    //         ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
-    //     });
-    //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
-    // },[])
 
     return(
         <div>
@@ -87,25 +77,8 @@ const PaletteFormNav = (props) => {
                     </Typography>
                     </Toolbar>
                     <div className={ classes.navButtons }>
-                        <ValidatorForm 
-                            onSubmit={ () => handleSubmit(colorPaletteName) } 
-                            onError={ errors => console.log(errors) }
-                        >
-                            <TextValidator 
-                                value={ colorPaletteName }
-                                label="Palette Name"
-                                onChange={ e => setColorPaletteName(e.target.value)}
-                                validators={['required']}
-                                errorMessages={['this field is required']}
-                            />
-                            <Button 
-                            variant="contained" 
-                            color="primary"
-                            type="submit"
-                            >
-                            Save Palette
-                            </Button>
-                        </ValidatorForm>
+         
+                        <PaletteMetaForm handleSubmit={ handleSubmit } />
                         <Link to="/">
                                 <Button 
                                     variant="contained" 
