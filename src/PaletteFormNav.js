@@ -113,6 +113,7 @@ const PaletteFormNav = (props) => {
                 { formShowing && (<PaletteMetaForm 
                     handleSubmit={ handleSubmit }
                     palettes={ palettes } 
+                    toggleForm={ toggleFormShowing }
                 />) }
         </div>
     )

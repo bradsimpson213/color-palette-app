@@ -1,7 +1,5 @@
 // React imports
 import React, { useState } from 'react';
-// Custom Hook import
-import useToggleState from "./hooks/useToggleState";
 // Material UI imports
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,8 +14,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 
 const PaletteMetaForm = (props) => {
-  const { handleSubmit } = props;  // palettes is available from props but not used
-  const [open, toggleOpen] = useToggleState(true);
+  const { handleSubmit, toggleForm } = props;  // palettes is available from props but not used
   const [colorPaletteName, setColorPaletteName] = useState();
 
     //Custom form validator not working below
@@ -33,8 +30,8 @@ const PaletteMetaForm = (props) => {
     <div>
    
         <Dialog 
-            open={ open } 
-            onClose={ toggleOpen } 
+            open={ true } 
+            onClose={ toggleForm } 
             aria-labelledby="form-dialog-title"
         >
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
@@ -58,21 +55,15 @@ const PaletteMetaForm = (props) => {
             </DialogContent>
             <DialogActions>
                 <Button 
-                    onClick={ toggleOpen } 
+                    onClick={ toggleForm } 
                     color="primary"
                 >
                 Cancel
                 </Button>
-                {/* <Button 
-                    onClick={ toggleOpen } 
-                    color="primary"
-                >
-                Subscribe
-                </Button> */}
                 <Button 
                     variant="contained" 
                     color="primary"
-                    onClick={ toggleOpen }
+                    onClick={ () => handleSubmit(colorPaletteName) }
                     type="submit"
                 >
                     Save Palette
