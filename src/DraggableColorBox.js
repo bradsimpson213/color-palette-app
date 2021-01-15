@@ -34,9 +34,9 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: "space-between"
     },
-    deleteIcon: {
-        transition: "all 0.3s ease-in-out"
-    }
+    // deleteIcon: {
+    //     transition: "all 0.3s ease-in-out"
+    // }
 })
 
 const DraggableColorBox = (props) => {

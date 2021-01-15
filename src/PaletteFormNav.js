@@ -1,6 +1,8 @@
 // React imports
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
+// Custom Hook imports
+import useToggleState from "./hooks/useToggleState";
 // Custom Component imports
 import PaletteMetaForm from "./PaletteMetaForm";
 // Material Component imports
@@ -29,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
         }),
         flexDirection: 'row',
         justifyContent: 'space-between',
+        alignItems: 'center',
         height: '64px'
     },
     appBarShift: {
@@ -43,14 +46,20 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     navButtons: {
-
+        marginRight: '1rem'
+    },
+    button: {
+        margin: '0 0.5rem',
+    },
+    link: {
+        textDecoration: 'none'
     }
 }));
 
 const PaletteFormNav = (props) => {
     const classes = useStyles();
     const { palettes, drawerStatus, toggleDrawer, handleSubmit } = props;
-    // const [ drawerStatus, toggleDrawer] = useToggleState(false)
+    const [formShowing, toggleFormShowing] = useToggleState(false)
 
     return(
         <div>
@@ -78,19 +87,33 @@ const PaletteFormNav = (props) => {
                     </Toolbar>
                     <div className={ classes.navButtons }>
          
-                        <PaletteMetaForm 
-                            handleSubmit={ handleSubmit }
-                            palettes={ palettes } />
-                        <Link to="/">
-                                <Button 
-                                    variant="contained" 
-                                    color="secondary"
-                                >
-                                    Go Back
-                                </Button>
+                        
+                        <Link 
+                            className={ classes.link }
+                            to="/"
+                        >
+                            <Button 
+                                className={ classes.button }
+                                variant="contained"
+                                color="secondary"
+                            >
+                                Go Back
+                            </Button>
                         </Link>
+                        <Button 
+                            className={ classes.button }
+                            variant="contained" 
+                            color="primary" 
+                            onClick={ toggleFormShowing }
+                        >
+                            Save
+                        </Button>
                     </div>
                 </AppBar>
+                { formShowing && (<PaletteMetaForm 
+                    handleSubmit={ handleSubmit }
+                    palettes={ palettes } 
+                />) }
         </div>
     )
 };
