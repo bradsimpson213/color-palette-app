@@ -43,7 +43,7 @@ const PaletteMetaForm = (props) => {
             >
             <DialogContent>
             <DialogContentText>
-                Please enter a name for your new palette.  Make sure it is unique!
+                Please enter a name for your new palette.  Please make sure it is unique!
             </DialogContentText>
             <Picker />
                 <TextValidator 
