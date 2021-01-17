@@ -1,6 +1,7 @@
 // React imports
 import React, { useState } from 'react';
-// Material UI imports
+// Custom Hook imports
+import useToggleState from "./hooks/useToggleState";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -18,6 +19,7 @@ import "emoji-mart/css/emoji-mart.css"
 const PaletteMetaForm = (props) => {
   const { handleSubmit, toggleForm } = props;  // palettes is available from props but not used
   const [colorPaletteName, setColorPaletteName] = useState();
+  const [emojiFormOpen, toggleEmojiFormOpen] =useToggleState(false)
 
     //Custom form validator not working below
     // useEffect( ()=> {
@@ -27,25 +29,44 @@ const PaletteMetaForm = (props) => {
     //     });
     //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
     // },[])
+//() => handleSubmit(colorPaletteName)
+    const finalFormSubmit = (selectedEmoji) => {
+        const newPalette = {
+            paletteName: colorPaletteName,
+            emoji: selectedEmoji.native
+        }
+        console.log(colorPaletteName)
+        console.log(newPalette);
+
+        handleSubmit(newPalette)
+    };
 
   return (
     <div>
-   
         <Dialog 
-            open={ true } 
+            open={ emojiFormOpen }
+            onClose={ toggleEmojiFormOpen } 
+        >
+            <DialogTitle id="emoji-form-dialog-title">Choose a Palette Emoji</DialogTitle>
+            <Picker
+                onSelect={ finalFormSubmit }
+                title="Pick a Palette Emoji" 
+            />
+        </Dialog>
+        <Dialog 
+            open={ !emojiFormOpen } 
             onClose={ toggleForm } 
             aria-labelledby="form-dialog-title"
         >
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
             <ValidatorForm
-                onSubmit={ () => handleSubmit(colorPaletteName) } 
+                onSubmit={ toggleEmojiFormOpen } 
                 onError={ errors => console.log(errors) }
             >
             <DialogContent>
             <DialogContentText>
                 Please enter a name for your new palette.  Please make sure it is unique!
             </DialogContentText>
-            <Picker />
                 <TextValidator 
                     value={ colorPaletteName }
                     label="Palette Name"
@@ -66,7 +87,7 @@ const PaletteMetaForm = (props) => {
                 <Button 
                     variant="contained" 
                     color="primary"
-                    onClick={ () => handleSubmit(colorPaletteName) }
+                    onClick={ toggleEmojiFormOpen }
                     type="submit"
                 >
                     Save Palette
