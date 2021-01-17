@@ -6,6 +6,7 @@ import MiniPalette from "./MiniPalette";
 // Style imports
 import { withStyles } from "@material-ui/styles";
 import styles from "./styles/PaletteListStyles";
+import { v4 as uuid } from 'uuid';
 
 
 const PaletteList = (props) => {
@@ -25,12 +26,13 @@ const PaletteList = (props) => {
                 </nav>
                 <div className={ classes.palettes }>
                     { palettes.map(palette => (
-                            <p>
+                            <div>
                                 <MiniPalette 
-                                    {...palette }
+                                    { ...palette }
+                                    key={ uuid() }
                                     handleClick={ navToPalette }
                                 />
-                            </p>
+                            </div>
                     ))}
                 </div>
             </div>

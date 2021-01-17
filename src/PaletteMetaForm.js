@@ -1,7 +1,6 @@
 // React imports
 import React, { useState } from 'react';
-// Custom Hook imports
-import useToggleState from "./hooks/useToggleState";
+// Material UI imports
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -19,7 +18,7 @@ import "emoji-mart/css/emoji-mart.css"
 const PaletteMetaForm = (props) => {
   const { handleSubmit, toggleForm } = props;  // palettes is available from props but not used
   const [colorPaletteName, setColorPaletteName] = useState();
-  const [emojiFormOpen, toggleEmojiFormOpen] =useToggleState(false)
+  const [formStage, setFormStage] =useState("name")
 
     //Custom form validator not working below
     // useEffect( ()=> {
@@ -44,8 +43,8 @@ const PaletteMetaForm = (props) => {
   return (
     <div>
         <Dialog 
-            open={ emojiFormOpen }
-            onClose={ toggleEmojiFormOpen } 
+            open={ formStage === "emoji" }
+            onClose={ () => setFormStage("name") } 
         >
             <DialogTitle id="emoji-form-dialog-title">Choose a Palette Emoji</DialogTitle>
             <Picker
@@ -54,13 +53,13 @@ const PaletteMetaForm = (props) => {
             />
         </Dialog>
         <Dialog 
-            open={ !emojiFormOpen } 
-            onClose={ toggleForm } 
+            open={ formStage === "name" } 
+            onClose={ () => setFormStage("emoji") } 
             aria-labelledby="form-dialog-title"
         >
         <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
             <ValidatorForm
-                onSubmit={ toggleEmojiFormOpen } 
+                onSubmit={ () => setFormStage("emoji") } 
                 onError={ errors => console.log(errors) }
             >
             <DialogContent>
@@ -87,7 +86,7 @@ const PaletteMetaForm = (props) => {
                 <Button 
                     variant="contained" 
                     color="primary"
-                    onClick={ toggleEmojiFormOpen }
+                    onClick={ () => setFormStage("emoji") }
                     type="submit"
                 >
                     Save Palette
