@@ -1,4 +1,8 @@
+// react imports
 import React from "react";
+// Material imports
+import DeleteIcon from '@material-ui/icons/Delete';
+//Style imports
 import { withStyles } from "@material-ui/styles";
 import styles from "./styles/MiniPaletteStyles";
 
@@ -9,6 +13,12 @@ const MiniPalette = (props) => {
         <div 
             className={ classes.root }
             onClick={ () => handleClick(id) }>
+                <div className={ classes.delete }>
+                    <DeleteIcon 
+                        className={ classes.deleteIcon } 
+                        style={{ transition: 'all 0.3s ease-in-out' }}
+                    />
+                </div>    
             <div className={ classes.colors }>
                 { colors.map( color =>(
                     <div 
