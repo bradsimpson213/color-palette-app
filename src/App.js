@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 // Custom Component imports
 import PaletteList from './PaletteList';
@@ -11,14 +11,22 @@ import seedColors from "./seedColors";
 import { generatePalette } from "./colorHelpers";
 
 const App = () => {
-  const [palettes,  setPalettes] = useState(seedColors);
+ 
+  const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
+  const [palettes,  setPalettes] = useState(savedPalettes || seedColors);
+
   const findPalette = (id) => {
     return palettes.find((palette) => palette.id === id);
   };
 
   const savePalette = (newPalette) => {
-    setPalettes([...palettes, newPalette ])
-  };
+    setPalettes([...palettes, newPalette ]);
+  };  
+
+  // useEffect will sync localStorage each time state of palettes is changed
+  useEffect( () => {
+    window.localStorage.setItem("palettes", JSON.stringify(palettes));
+  },[palettes]);
 
   return (
     <Switch>
