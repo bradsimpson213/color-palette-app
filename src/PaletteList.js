@@ -11,7 +11,7 @@ import { v4 as uuid } from 'uuid';
 
 const PaletteList = (props) => {
     let history = useHistory();
-    const { palettes, classes } = props;
+    const { palettes, classes, removePalette } = props;
 
     const navToPalette = (id) => {
         history.push(`/palette/${id}`);
@@ -31,6 +31,7 @@ const PaletteList = (props) => {
                                     { ...palette }
                                     key={ uuid() }
                                     handleClick={ navToPalette }
+                                    removePalette={ removePalette }
                                 />
                             </div>
                     ))}

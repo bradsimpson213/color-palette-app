@@ -23,6 +23,10 @@ const App = () => {
     setPalettes([...palettes, newPalette ]);
   };  
 
+  const removePalette = (id) => {
+    setPalettes( palettes.filter( palette => palette.id !== id ));
+  };
+
   // useEffect will sync localStorage each time state of palettes is changed
   useEffect( () => {
     window.localStorage.setItem("palettes", JSON.stringify(palettes));
@@ -38,7 +42,12 @@ const App = () => {
       <Route 
         exact 
         path="/"
-        render={ () => <PaletteList palettes={ palettes } /> }
+        render={ () => 
+          <PaletteList 
+            palettes={ palettes } 
+            removePalette={ removePalette }
+            /> 
+        }
       />
       <Route 
         exact 
