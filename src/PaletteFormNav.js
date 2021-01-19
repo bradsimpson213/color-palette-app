@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 // Style imports
 import { makeStyles } from '@material-ui/core/styles';
+import sizes from "./styles/MediaSizes";
 
 
 const drawerWidth = 400;
@@ -43,13 +44,21 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginLeft: 12,
+        marginRight: 20
     },
     navButtons: {
-        marginRight: '1rem'
+        marginRight: '1rem',
+        [sizes.down("xs")]: {
+            marginRight: "0.5rem"
+        }
     },
     button: {
         margin: '0 0.5rem',
+        [sizes.down("xs")]: {
+            margin: '0 0.2rem',
+            padding: '0.3rem'
+        }
     },
     link: {
         textDecoration: 'none'

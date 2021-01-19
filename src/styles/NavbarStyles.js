@@ -1,3 +1,5 @@
+import sizes from "./MediaSizes";
+
 const styles= {
     Navbar: {
         display: 'flex',
@@ -18,6 +20,9 @@ const styles= {
         "& a": {
             textDecoration: 'none',
             color: 'black'
+        },
+        [sizes.down("xs")]: {
+            display: "none"
         }
     },
     slider: {
@@ -39,6 +44,9 @@ const styles= {
             height: '13px',
             marginLeft: '-7px',
             marginTop: '-3px'
+        },
+        [sizes.down("md")]: {
+            width: "150px"
         }
     },
     selectContainer: {
