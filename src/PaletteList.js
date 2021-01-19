@@ -3,10 +3,13 @@ import React from "react";
 import { useHistory, Link } from "react-router-dom";
 // Custom Component imports
 import MiniPalette from "./MiniPalette";
+// Util imports
+import { v4 as uuid } from 'uuid';
 // Style imports
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { withStyles } from "@material-ui/styles";
 import styles from "./styles/PaletteListStyles";
-import { v4 as uuid } from 'uuid';
+
 
 
 const PaletteList = (props) => {
@@ -24,18 +27,22 @@ const PaletteList = (props) => {
                     <h1 className={ classes.mainTitle }>React Colors</h1>
                     <Link to="/palette/new">Create Palette</Link>
                 </nav>
-                <div className={ classes.palettes }>
-                    { palettes.map(palette => (
-                            <div>
-                                <MiniPalette 
-                                    { ...palette }
-                                    key={ uuid() }
-                                    handleClick={ navToPalette }
-                                    removePalette={ removePalette }
-                                />
-                            </div>
-                    ))}
-                </div>
+                <TransitionGroup className={ classes.palettes }>
+                { palettes.map(palette => (
+                    <CSSTransition
+                        key={ palette.id }
+                        classNames="fade"
+                        timeout={1000}
+                    >
+                            <MiniPalette 
+                                { ...palette }
+                                key={ uuid() }
+                                handleClick={ navToPalette }
+                                removePalette={ removePalette }
+                            />
+                    </CSSTransition>
+                ))}
+                </TransitionGroup>
             </div>
         </div>
     )

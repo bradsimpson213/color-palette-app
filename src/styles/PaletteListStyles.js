@@ -2,6 +2,15 @@ import sizes from "./MediaSizes";
 import BackgroundSvg from "../assets/Sun-Tornado.svg";
 
 const styles = {
+    "@global": {
+        ".fade-exit": {
+            opacity: 1
+        },
+        ".fade-exit-active": {
+            opacity: 0,
+            transition: "opacity 1000ms ease-out"
+        }
+    },
     root: {
         height: "100vh",
         display: "flex",
