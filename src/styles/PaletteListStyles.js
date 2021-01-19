@@ -1,12 +1,18 @@
 import sizes from "./MediaSizes";
+import BackgroundSvg from "../assets/Sun-Tornado.svg";
 
 const styles = {
     root: {
-        backgroundColor: "blue",
         height: "100vh",
         display: "flex",
         alignItems: "flex-start",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor: "#1f29ee",
+        /* background by SVGBackgrounds.com */
+        backgroundImage: `url(${BackgroundSvg})`,
+        backgroundSize: "cover",
+        overflow: "scroll"
+
     },
     container: {
         width: "50%",
@@ -16,7 +22,10 @@ const styles = {
         flexWrap: "wrap",
         [sizes.down("xl")]:{
             width: '80%'
-        }      
+        },
+        [sizes.down("xs")]:{
+            width: '75%'
+        }       
     }, 
     nav: {
         display: "flex",
@@ -39,8 +48,11 @@ const styles = {
         },
         [sizes.down("xs")]:{
             gridTemplateColumns: "repeat(1, 100%)",
-            gridGap: '1rem'
+            gridGap: '1.4rem'
         }
+    },
+    mainTitle: {
+        fontSize: '2rem'
     }
 };
 
