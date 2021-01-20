@@ -8,11 +8,11 @@ import styles from "./styles/MiniPaletteStyles";
 
 
 const MiniPalette = (props) => {
-    const { classes, paletteName, emoji, colors, handleClick, id, removePalette } = props;
+    const { classes, paletteName, emoji, colors, handleClick, id, openDeleteDialog } = props;
 
     const deletePalette = (event) => {
         event.stopPropagation();
-        removePalette(id);
+        openDeleteDialog(id)
     }
 
 
@@ -23,7 +23,7 @@ const MiniPalette = (props) => {
                 <DeleteIcon 
                     className={ classes.deleteIcon } 
                     style={{ transition: 'all 0.3s ease-in-out' }}
-                    onClick={ (event) => deletePalette(event) }
+                    onClick={ deletePalette }
                 />
             <div className={ classes.colors }>
                 { colors.map( color =>(

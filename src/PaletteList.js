@@ -1,8 +1,9 @@
 // React imports
-import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import useToggleState from './hooks/useToggleState';
 // Custom Component imports
-import MiniPalette from "./MiniPalette";
+import MiniPalette from './MiniPalette';
 // Material imports
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
@@ -30,10 +31,23 @@ import red from '@material-ui/core/colors/red';
 const PaletteList = (props) => {
     let history = useHistory();
     const { palettes, classes, removePalette } = props;
+    const [deleteOpen, toggleDeleteOpen] = useToggleState(false)
+    const [deleteId, setDeleteId] = useState('');
 
     const navToPalette = (id) => {
         history.push(`/palette/${id}`);
     };
+
+    const openDeleteDialog = (id) => {
+        setDeleteId(id);
+        toggleDeleteOpen();
+    };
+
+    const deletePalette = () => {
+        removePalette(deleteId);
+        toggleDeleteOpen();
+        setDeleteId('');
+    }
 
     return (
         <div className={ classes.root }>
@@ -53,30 +67,39 @@ const PaletteList = (props) => {
                                 { ...palette }
                                 key={ uuid() }
                                 handleClick={ navToPalette }
-                                removePalette={ removePalette }
+                                openDeleteDialog ={ openDeleteDialog }
+                                // removePalette={ removePalette }
                             />
                     </CSSTransition>
                 ))}
                 </TransitionGroup>
             </div>
             <Dialog
-                open={ true }
+                open={ deleteOpen }
+                onClose={ toggleDeleteOpen }
+                aria-labelledby="delete-dialog-title"
             >
-                <DialogTitle>
+                <DialogTitle id="delete-dialog-title">
                     Delete this palette
                 </DialogTitle>
                 <List>
-                    <ListItem>
+                    <ListItem 
+                        button
+                        onClick={ deletePalette } 
+                        >
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar style={{ backgroundColor: blue[100], color: blue[600] }}>
                                 <CheckIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Delete" />
                     </ListItem>
-                    <ListItem>
+                    <ListItem 
+                        button
+                        onClick={ toggleDeleteOpen }
+                    >
                         <ListItemAvatar>
-                        <Avatar>
+                        <Avatar style={{ backgroundColor: red[100], color: red[600] }}>
                                 <CloseIcon />
                             </Avatar>
                         </ListItemAvatar>
