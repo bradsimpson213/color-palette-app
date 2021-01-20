@@ -2,7 +2,7 @@ const styles = {
     root: {
        backgroundColor: "white",
        border: "1px solid black",
-       borderRadius: "5px",
+       borderRadius: "10px",
        padding: "0.5rem",
        position: "relative",
        overflow: "hidden",
