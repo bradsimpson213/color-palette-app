@@ -108,7 +108,6 @@ const NewPaletteForm = (props) => {
   const handleDelete = (colorName) => {
     const newColors = colors.filter( color => color.color !== colorName);
     setColors(newColors);
-    alert(`${colorName} was deleted!`);
   };
 
   const onSortEnd = ({oldIndex, newIndex}) => {
@@ -192,7 +191,8 @@ const NewPaletteForm = (props) => {
             colors={ colors } 
             handleDelete={ handleDelete }
             axis="xy"
-            onSortEnd={ onSortEnd } 
+            onSortEnd={ onSortEnd }
+            distance={ 20 } 
           />
       </main>
     </div>
