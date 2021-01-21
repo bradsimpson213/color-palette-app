@@ -1,9 +1,13 @@
+// Reac imports
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import useToggleState from "./hooks/useToggleState";
+// Style imports
 import { withStyles } from  "@material-ui/styles";
 import styles from "./styles/ColorBoxStyles";
+import clsx from 'clsx';
 
 
 const ColorBox = (props) => {
@@ -21,9 +25,14 @@ const ColorBox = (props) => {
             <div style={{ background }} className={ classes.ColorBox }>
                 <div 
                     style={{ background }} 
-                    className={ `${ classes.copyOverlay} ${copy && classes.showOverlay}` } 
+                    className={ clsx(classes.copyOverlay, {
+                        [classes.showOverlay] : copy
+                    }) } 
                 />
-                <div className={ `${classes.copyMessage} ${copy && classes.showCopyMessage}` }>
+                <div className={ clsx(classes.copyMessage, {
+                    [classes.showCopyMessage] : copy 
+                    }) }
+                >
                     <h1>copied!</h1>
                     <p className={ classes.copyText}>
                         { background }
