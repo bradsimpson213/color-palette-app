@@ -34,10 +34,8 @@ const PaletteMetaForm = (props) => {
             paletteName: colorPaletteName,
             emoji: selectedEmoji.native
         }
-        console.log(colorPaletteName)
-        console.log(newPalette);
-
         handleSubmit(newPalette)
+        setFormStage("");
     };
 
   return (

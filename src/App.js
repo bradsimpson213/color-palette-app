@@ -12,8 +12,7 @@ import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 // Transition omports
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-// Stye imports
-import './App.css';
+
 
 const App = () => {
  
@@ -42,7 +41,7 @@ const App = () => {
       render={({ location }) => (
         <TransitionGroup>
           <CSSTransition
-            classNames="fade"
+            classNames="page"
             timeout={ 500 }
             key={ location.key }
           >
