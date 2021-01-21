@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import useToggleState from './hooks/useToggleState';
 // Custom Component imports
@@ -18,16 +18,17 @@ import CloseIcon from '@material-ui/icons/Close'
 import { v4 as uuid } from 'uuid';
 // Style imports
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { withStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import styles from './styles/PaletteListStyles';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 
+const useStyles = makeStyles(styles);
 
-
-const PaletteList = (props) => {
+const PaletteList = memo((props) => {
     let history = useHistory();
-    const { palettes, classes, removePalette } = props;
+    const classes = useStyles()
+    const { palettes, removePalette } = props;
     const [deleteOpen, toggleDeleteOpen] = useToggleState(false)
     const [deleteId, setDeleteId] = useState('');
 
@@ -65,7 +66,6 @@ const PaletteList = (props) => {
                                 key={ uuid() }
                                 handleClick={ navToPalette }
                                 openDeleteDialog ={ openDeleteDialog }
-                                // removePalette={ removePalette }
                             />
                     </CSSTransition>
                 ))}
@@ -106,6 +106,6 @@ const PaletteList = (props) => {
             </Dialog>
         </div>
     )
-};
+});
 
-export default withStyles(styles)(PaletteList);
+export default PaletteList;
