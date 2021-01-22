@@ -52,7 +52,12 @@ const PaletteList = memo((props) => {
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
-                    <Link to="/palette/new">Create Palette</Link>
+                    <Link 
+                        to="/palette/new"
+                        className={ classes.newPaletteLink }
+                    >
+                        Create Palette
+                    </Link>
                 </nav>
                 <TransitionGroup className={ classes.palettes }>
                 { palettes.map(palette => (
