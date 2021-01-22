@@ -56,7 +56,7 @@ const PaletteList = memo((props) => {
                         to="/palette/new"
                         className={ classes.newPaletteLink }
                     >
-                        Create Palette
+                        Create New Palette
                     </Link>
                 </nav>
                 <TransitionGroup className={ classes.palettes }>

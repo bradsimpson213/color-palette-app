@@ -1,4 +1,4 @@
-// import chroma from "chroma-js"; (no idea why chroma color change working in colorbox bu tnot here)
+import chroma from "chroma-js";
 import sizes from "./MediaSizes";
 
 const styles = {
@@ -33,15 +33,13 @@ const styles = {
         left: "0px",
         bottom: "0px",
         padding: "10px",
-        color: "black",
         letterSpacing: "1px",
         textTransform: "uppercase",
         fontSize: "12px",
+        color: props =>
+            chroma(props.color.color).luminance() >= 0.6 ? "black" : "white",
         display: 'flex',
         justifyContent: "space-between",
-        "&:hover": {
-            color: "white"
-        }
     },
     deleteIcon: {
         transition: "all 0.3s ease-in-out"
