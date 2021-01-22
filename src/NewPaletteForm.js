@@ -1,11 +1,12 @@
 // React imports
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 // Custom Component imports
-import useToggleState from "./hooks/useToggleState";
-import DraggableColorList from "./DraggableColorList";
-import PaletteFormNav from "./PaletteFormNav";
-import ColorPickerForm from "./ColorPickerForm";
+import useToggleState from './hooks/useToggleState';
+import DraggableColorList from './DraggableColorList';
+import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
+import seedColors from './seedColors';
 // Drag and Drop HOC imports
 import arrayMove from 'array-move';
 // Material Component imports
@@ -88,7 +89,7 @@ const NewPaletteForm = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   let history= useHistory();
-  const [colors, setColors] = useState(props.palettes[0].colors); 
+  const [colors, setColors] = useState(props.palettes[0].colors ? props.palettes[0].colors : seedColors[0].colors); 
   const [ drawerStatus, toggleDrawer] = useToggleState(false)
   const maxColors = 20;
   const fullPalette = colors.length >= maxColors;

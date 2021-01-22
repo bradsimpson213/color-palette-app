@@ -1,9 +1,9 @@
 // React imports
-import React from "react";
+import React from 'react';
 // Drag and Drop HOC imports
 import { SortableElement } from 'react-sortable-hoc';
 // Material Component imports
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from '@material-ui/icons/Delete';
 // Styles imports
 import { makeStyles } from '@material-ui/styles';
 import styles from "./styles/DraggableColorBoxStyles";

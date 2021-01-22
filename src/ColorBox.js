@@ -1,17 +1,19 @@
 // Reac imports
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import useToggleState from "./hooks/useToggleState";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import useToggleState from './hooks/useToggleState';
 // Style imports
-import { withStyles } from  "@material-ui/styles";
-import styles from "./styles/ColorBoxStyles";
+import { makeStyles } from  '@material-ui/styles';
+import styles from './styles/ColorBoxStyles';
 import clsx from 'clsx';
 
+const useStyles = makeStyles(styles);
 
 const ColorBox = (props) => {
-    const { name, background, paletteId, id, showingFullPalette, classes } = props;
+    const classes = useStyles();
+    const { name, background, paletteId, id, showingFullPalette } = props;
     const [ copy, toggleCopy ] = useToggleState(false)
    
     const changeCopyState = () => {
@@ -54,4 +56,4 @@ const ColorBox = (props) => {
     )
 };
 
-export default withStyles(styles)(ColorBox);
+export default ColorBox;
