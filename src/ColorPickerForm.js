@@ -44,6 +44,7 @@ const ColorPickerForm = (props) => {
             <ValidatorForm 
                 onSubmit={ makeNewColor } 
                 onError={ errors => console.log(errors) }
+                instantValidate={ false }
             >
                 <TextValidator 
                     value={ colorName }
