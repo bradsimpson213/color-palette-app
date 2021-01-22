@@ -96,6 +96,17 @@ const App = () => {
                 </Page>
               )}
             />
+            <Route 
+              /* 404 catch all route, renders PaletteList Page */
+              render={ () => (
+                <Page>
+                  <PaletteList 
+                    palettes={ palettes } 
+                    removePalette={ removePalette }
+                  /> 
+                </Page>
+              )}
+            />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
