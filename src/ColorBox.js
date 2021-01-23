@@ -15,7 +15,7 @@ const ColorBox = (props) => {
     const { name, background, paletteId, id, showingFullPalette, classes } = props;
     const [ copy, toggleCopy ] = useToggleState(false)
    
-    useTimeout(toggleCopy, 1500);
+    useTimeout(() => toggleCopy, 1500);
  
     return (
         <CopyToClipboard text={ background } onCopy={ toggleCopy }>
