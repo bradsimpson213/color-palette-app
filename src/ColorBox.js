@@ -16,7 +16,7 @@ const ColorBox = (props) => {
    
     const changeCopyState = () => {
         toggleCopy(); 
-        setTimeout(() => toggleCopy, 1500);
+        // setTimeout(toggleCopy, 1500);
         // refactor at some point for callback
     };
 
