@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useToggleState from './hooks/useToggleState';
+import useTimeout from './hooks/useTimeout';
 // Util import
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 // Style imports
@@ -14,14 +15,10 @@ const ColorBox = (props) => {
     const { name, background, paletteId, id, showingFullPalette, classes } = props;
     const [ copy, toggleCopy ] = useToggleState(false)
    
-    const changeCopyState = () => {
-        toggleCopy(); 
-        // setTimeout(toggleCopy, 1500);
-        // refactor at some point for callback
-    };
-
+    useTimeout(toggleCopy, 1500);
+ 
     return (
-        <CopyToClipboard text={ background } onCopy={ changeCopyState }>
+        <CopyToClipboard text={ background } onCopy={ toggleCopy }>
             <div style={{ background }} className={ classes.ColorBox }>
                 <div 
                     style={{ background }} 
