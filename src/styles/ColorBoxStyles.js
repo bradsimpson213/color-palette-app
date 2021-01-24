@@ -37,7 +37,9 @@ const styles = {
     },
     colorName: {
         color: props =>
-            chroma(props.background).luminance() <= 0.08 ? "white" : "black"
+            chroma(props.background).luminance() <= 0.10 ? "white" : "black",
+        fontWeight: 'bold',
+        fontSize: '1.5rem'
     },
     seeMore: {
         background: "rgba(255, 255, 255, 0.3)",

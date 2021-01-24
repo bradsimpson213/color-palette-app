@@ -54,7 +54,7 @@ const PaletteList = memo((props) => {
                     <h1 className={ classes.mainTitle }>React Colors</h1>
                     <Link 
                         to="/palette/new"
-                        className={ classes.newPaletteLink }
+                        className={ classes.newLink }
                     >
                         Create New Palette
                     </Link>

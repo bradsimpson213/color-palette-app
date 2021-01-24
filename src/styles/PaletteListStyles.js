@@ -61,11 +61,12 @@ const styles = {
         }
     },
     mainTitle: {
-        fontSize: "2.5rem",
+        fontSize: "3.0rem",
+        fontWeight: 'bold',
         textShadow: "-2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000"
     },
-    newPaletteLink: {
-        fontsize: '1.5rem',
+    newLink: {
+        fontsize: '2.0rem',
         fontWeight: "bold",
         marginRight: '1.5rem',
         [sizes.down("xs")]:{
