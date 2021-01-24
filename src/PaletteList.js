@@ -55,6 +55,7 @@ const PaletteList = memo((props) => {
                     <Link 
                         to="/palette/new"
                         className={ classes.newLink }
+                        style={{ fontSize: '1.5rem'}}
                     >
                         Create New Palette
                     </Link>
