@@ -26,7 +26,7 @@ const Navbar = (props) => {
     return (
         <header className={ classes.Navbar }>
             <div className={ classes.logo }>
-                <Link to="/">colorpickerapp🎨</Link>
+                <Link to="/">React Colors 🎨</Link>
             </div>
                 { multiColor && (
                     <div>
@@ -38,6 +38,7 @@ const Navbar = (props) => {
                                 max={ 900 } 
                                 step= { 100 } 
                                 onAfterChange={ setLevel }
+                                startPoint={ 500 }
                             />
                         </div>
                     </div>
