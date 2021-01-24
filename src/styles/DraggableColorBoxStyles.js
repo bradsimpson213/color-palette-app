@@ -35,9 +35,11 @@ const styles = {
         padding: "10px",
         letterSpacing: "1px",
         textTransform: "uppercase",
-        fontSize: "12px",
+        fontFamily: 'IndieFlower',
+        fontWeight: 'bold',
+        fontSize: '1.5rem',
         color: props =>
-            chroma(props.color.color).luminance() >= 0.6 ? "black" : "white",
+            chroma(props.color.color).luminance() <= 0.20 ? "white" : "black",
         display: 'flex',
         justifyContent: "space-between",
     },
