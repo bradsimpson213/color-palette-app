@@ -33,12 +33,12 @@ const Navbar = (props) => {
                         <span>Level: { level }</span>
                         <div className={ classes.slider }>
                             <Slider 
-                                default={ level } 
+                                startPoint={ 500 } 
                                 min={ 100 } 
                                 max={ 900 } 
                                 step= { 100 } 
+                                defaultValue= { level }
                                 onAfterChange={ setLevel }
-                                startPoint={ 500 }
                             />
                         </div>
                     </div>
