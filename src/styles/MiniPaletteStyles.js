@@ -2,7 +2,7 @@ const styles = {
     root: {
        backgroundColor: "white",
        border: "1px solid black",
-       borderRadius: "10px",
+       borderRadius: "15px",
        padding: "0.5rem",
        position: "relative",
        overflow: "hidden",
@@ -13,9 +13,9 @@ const styles = {
     },
     colors: {
         backgroundColor: "#dae1e4",
-        height: "150px",
+        borderRadius: "15px",
+        height: "200px",
         width: "100%",
-        borderRadius: "5px",
         overflow: "hidden"
     },
     title: {
@@ -46,8 +46,8 @@ const styles = {
     deleteIcon: {
         color: 'white',
         backgroundColor: '#eb3d30',
-        width: '20px',
-        height: '20px',
+        width: '25px',
+        height: '25px',
         position: 'absolute',
         right: '0px',
         top: '0px',
