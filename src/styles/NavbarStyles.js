@@ -53,6 +53,16 @@ const styles= {
     selectContainer: {
         marginLeft: 'auto',
         marginRight: '1rem'
+    },
+    button: {
+        margin: '0 1rem',
+        [sizes.down("xs")]: {
+            margin: '0 0.2rem',
+            padding: '0.3rem'
+        }
+    },
+    link: {
+        textDecoration: 'none'
     }
 };
 
