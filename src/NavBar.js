@@ -45,7 +45,11 @@ const Navbar = (props) => {
                     </div>
                 )}
             <div className={ classes.selectContainer }>
-                <Select value={ format } onChange={ changeFormat }>
+                <Select 
+                    className={ classes.selectInput }
+                    value={ format } 
+                    onChange={ changeFormat }
+                >
                     <MenuItem value="hex">HEX - #ffffff</MenuItem>
                     <MenuItem value="rgb">RGB - rbg(255,255,255)</MenuItem>
                     <MenuItem value="rgba">RGBA - rgba(255,255,255,1.0)</MenuItem>

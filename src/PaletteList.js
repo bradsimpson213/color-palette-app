@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import useToggleState from './hooks/useToggleState';
 // Custom Component imports
 import MiniPalette from './MiniPalette';
+import MainFooter from './MainFooter';
 // Material imports
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
@@ -22,6 +23,7 @@ import { makeStyles } from '@material-ui/styles';
 import styles from './styles/PaletteListStyles';
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
+
 
 const useStyles = makeStyles(styles);
 
@@ -55,27 +57,28 @@ const PaletteList = memo((props) => {
                     <Link 
                         to="/palette/new"
                         className={ classes.newLink }
-                        style={{ fontSize: '1.5rem'}}
+                        style={{ fontSize: '1.8rem'}}
                     >
                         Create New Palette
                     </Link>
                 </nav>
                 <TransitionGroup className={ classes.palettes }>
-                { palettes.map(palette => (
-                    <CSSTransition
-                        key={ palette.id }
-                        classNames="fade"
-                        timeout={1000}
-                    >
-                            <MiniPalette 
-                                { ...palette }
-                                key={ uuid() }
-                                handleClick={ navToPalette }
-                                openDeleteDialog ={ openDeleteDialog }
-                            />
-                    </CSSTransition>
-                ))}
+                    { palettes.map(palette => (
+                        <CSSTransition
+                            key={ palette.id }
+                            classNames="fade"
+                            timeout={1000}
+                        >
+                                <MiniPalette 
+                                    { ...palette }
+                                    key={ uuid() }
+                                    handleClick={ navToPalette }
+                                    openDeleteDialog ={ openDeleteDialog }
+                                />
+                        </CSSTransition>
+                    ))}
                 </TransitionGroup>
+                <MainFooter />
             </div>
             <Dialog
                 open={ deleteOpen }

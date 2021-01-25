@@ -15,16 +15,6 @@ const Palette = (props) => {
     const changeFormat = (value) => {
         setFormat(value);
     };
-   
-    const colorBoxes = colors[level].map(color => {
-        return <ColorBox 
-            background={ color[format] } 
-            name={ color.name } 
-            key={ color.id }
-            id={ color.id }
-            paletteId={ id }
-            showingFullPalette={ true } />
-    });
 
     return (
         <div className={ classes.Palette }>
@@ -35,7 +25,16 @@ const Palette = (props) => {
                 multiColor={ true }
             />
             <div className={ classes.PaletteColors }>
-            { colorBoxes }
+                {colors[level].map(color => {
+                    return <ColorBox 
+                                background={ color[format] } 
+                                name={ color.name } 
+                                key={ color.id }
+                                id={ color.id }
+                                paletteId={ id }
+                                showingFullPalette={ true } 
+                            />
+                })}
             </div>
             <PaletteFooter 
                 paletteName={ paletteName } 

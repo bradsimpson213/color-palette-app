@@ -1,6 +1,6 @@
 const styles = {
     footer: {
-        backgroundColor: 'white',
+        backgroundColor: 'lightgray',
         height: '5vh',
         display: 'flex',
         justifyContent: 'flex-end',
