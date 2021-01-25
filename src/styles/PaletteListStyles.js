@@ -24,7 +24,7 @@ const styles = {
 
     },
     container: {
-        width: "50%",
+        width: "60%",
         display: "flex",
         alignItems: "flex-start",
         flexDirection: "column",
@@ -61,7 +61,7 @@ const styles = {
         }
     },
     mainTitle: {
-        fontSize: "3.5rem",
+        fontSize: "3.7rem",
         fontWeight: 'bold',
         textShadow: "-2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000"
     },
