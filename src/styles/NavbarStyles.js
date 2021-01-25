@@ -5,7 +5,8 @@ const styles= {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        height: '6vh'
+        height: '6vh',
+        backgroundColor: 'lightgray'
     },
     logo: {
         marginRight: '15px',
@@ -52,7 +53,14 @@ const styles= {
     },
     selectContainer: {
         marginLeft: 'auto',
-        marginRight: '1rem'
+        marginRight: '1rem',
+        paddingLeft: '1rem',
+        backgroundColor: '#eceff1'
+    },
+    selectInput: {
+        textAlign: 'center',
+        backgroundColor: '#eceff1',
+        marginLeft: '1rem'
     },
     button: {
         margin: '0 1rem',
