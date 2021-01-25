@@ -23,7 +23,6 @@ const useStyles = makeStyles({
     icons: {
         color: 'lightgray',
         margin: '7px 10px 0 10px',
-       
     }
 })
 
