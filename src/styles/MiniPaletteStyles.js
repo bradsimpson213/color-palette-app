@@ -1,6 +1,6 @@
 const styles = {
     root: {
-       backgroundColor: "white",
+       backgroundColor: "black",
        border: "1px solid black",
        borderRadius: "15px",
        padding: "0.5rem",
@@ -23,9 +23,9 @@ const styles = {
         justifyContent: "space-between",
         alignItems: "center",
         margin: "0",
-        color: "black",
+        color: "white",
         paddingTop: "0.5rem",
-        fontSize: "1rem",
+        fontSize: "1.3rem",
         position: "relative"
     },
     emoji: {

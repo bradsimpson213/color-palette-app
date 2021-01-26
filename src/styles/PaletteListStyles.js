@@ -1,5 +1,5 @@
 import sizes from "./MediaSizes";
-import BackgroundSvg from "../assets/Sun-Tornado.svg";
+import BackgroundSvg from "../assets/Gray-Background.svg";
 
 const styles = {
     "@global": {
