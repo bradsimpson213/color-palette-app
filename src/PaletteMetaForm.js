@@ -12,13 +12,27 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Picker } from "emoji-mart";
 // Style imports
 import "emoji-mart/css/emoji-mart.css"
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
 
+
+const useStyles = makeStyles({
+    root: {
+        fontFamily: 'IndieFlower',
+        backgroundColor: 'black',
+        color: 'white'
+    },
+    dialogTitle: {
+        fontFamily: 'IndieFlower',
+        backgroundColor: 'black',
+        color: 'white'
+    }
+});
 
 const PaletteMetaForm = (props) => {
-  const { handleSubmit, toggleForm } = props;  // palettes is available from props but not used
-  const [colorPaletteName, setColorPaletteName] = useState();
-  const [formStage, setFormStage] =useState("name")
+    const classes = useStyles();
+    const { handleSubmit, toggleForm } = props;  // palettes is available from props but not used
+    const [colorPaletteName, setColorPaletteName] = useState();
+    const [formStage, setFormStage] =useState("name")
 
     //Custom form validator not working below
     // useEffect( ()=> {
@@ -28,7 +42,8 @@ const PaletteMetaForm = (props) => {
     //     });
     //     return () => ValidatorForm.removeValidationRule('PaletteUnique');
     // },[])
-//() => handleSubmit(colorPaletteName)
+    //() => handleSubmit(colorPaletteName)
+
     const finalFormSubmit = (selectedEmoji) => {
         const newPalette = {
             paletteName: colorPaletteName,
@@ -39,12 +54,17 @@ const PaletteMetaForm = (props) => {
     };
 
   return (
-    <div>
+    <div className={ classes.root }>
         <Dialog 
             open={ formStage === "emoji" }
             onClose={ () => setFormStage("name") } 
         >
-            <DialogTitle id="emoji-form-dialog-title">Choose a Palette Emoji</DialogTitle>
+            <DialogTitle 
+                className={ classes.dialogTitle }
+                id="emoji-form-dialog-title"
+            >
+                Choose a Palette Emoji
+            </DialogTitle>
             <Picker
                 onSelect={ finalFormSubmit }
                 title="Pick a Palette Emoji" 

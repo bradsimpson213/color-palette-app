@@ -40,7 +40,10 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       width: drawerWidth,
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+      fontFamily: 'IndieFlower',
+      backgroundColor: 'black',
+      color: 'white'
     },
     drawerHeader: {
       display: 'flex',
@@ -50,6 +53,12 @@ const useStyles = makeStyles((theme) => ({
       // necessary for content to be below app bar
       ...theme.mixins.toolbar,
       justifyContent: 'flex-end',
+    },
+    drawerTitle: {
+      fontFamily: 'IndieFlower',
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: '2.5rem'
     },
     content: {
       flexGrow: 1,
@@ -77,10 +86,14 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center'
     }, 
     buttons: {
-      width: '100%'
+      width: '100%',
     },
     button: {
-      width: '50%'
+      width: '50%',
+      fontFamily: 'IndieFlower',
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: '1.1rem'
     }
   }));
 
@@ -154,12 +167,14 @@ const NewPaletteForm = (props) => {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={ toggleDrawer }>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: "white" }}/> 
+              : <ChevronRightIcon style={{ color: "white" }} />}
           </IconButton>
         </div>
         <Divider />
         <div className={ classes.container }>
-          <Typography 
+          <Typography
+            className={ classes.drawerTitle } 
             variant="h4"
             gutterBottom
           >
@@ -187,6 +202,7 @@ const NewPaletteForm = (props) => {
           <ColorPickerForm 
             fullPalette={ fullPalette }
             addNewColor={ addNewColor }
+            fontFamily="IndieFlower"
           />
         </div>     
       </Drawer>
