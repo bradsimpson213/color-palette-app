@@ -9,7 +9,8 @@ const styles = {
         ".fade-exit-active": {
             opacity: 0,
             transition: "opacity 1000ms ease-out"
-        }
+        },
+        fontFamily: 'IndieFlower'
     },
     root: {
         height: "100vh",

@@ -23,7 +23,8 @@ const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        display: 'flex'
+        display: 'flex',
+        backgroundColor: "black"
     },
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
@@ -33,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: '64px'
+        height: '64px',
+        backgroundColor: "black",
+        color: "white"
     },
     appBarShift: {
         width: `calc(100% - ${drawerWidth}px)`,
@@ -45,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginLeft: 12,
-        marginRight: 20
+        marginRight: 20,
+        color: "white"
     },
     navButtons: {
         marginRight: '1rem',
@@ -55,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         margin: '0 0.5rem',
+        fontFamily: 'IndieFlower',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: '1rem',
         [sizes.down("xs")]: {
             margin: '0 0.2rem',
             padding: '0.3rem'
@@ -62,6 +70,12 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         textDecoration: 'none'
+    },
+    navText: {
+        fontFamily: 'IndieFlower',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: '1.6rem'
     },
     hide: {
         display: 'none',
@@ -85,7 +99,6 @@ const PaletteFormNav = (props) => {
                 >
                     <Toolbar>
                     <IconButton
-                        color="inherit"
                         aria-label="open drawer"
                         onClick={ toggleDrawer }
                         edge="start"
@@ -95,7 +108,11 @@ const PaletteFormNav = (props) => {
                     >
                         <AddToPhotosIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+                    <Typography 
+                        className={ classes.navText }
+                        variant="h6" 
+                        noWrap
+                    >
                         Create A Palette
                     </Typography>
                     </Toolbar>

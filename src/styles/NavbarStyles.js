@@ -63,11 +63,17 @@ const styles= {
     },
     selectInput: {
         textAlign: 'center',
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
         backgroundColor: '#eceff1',
+        fontFamily: 'IndieFlower',
         marginLeft: '1rem'
     },
     button: {
         margin: '0 1rem',
+        fontFamily: 'IndieFlower',
+        fontSize: '1rem',
+        fontWeight: 'bold',
         [sizes.down("xs")]: {
             margin: '0 0.2rem',
             padding: '0.3rem'
