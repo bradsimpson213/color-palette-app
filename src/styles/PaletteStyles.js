@@ -5,7 +5,8 @@ const styles = {
     Palette: {
         height: "100vh",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        backgroundColor: "black"
     },
     PaletteColors: {
         height: "90%"

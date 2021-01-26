@@ -6,14 +6,14 @@ const styles= {
         alignItems: 'center',
         justifyContent: 'flex-start',
         height: '6vh',
-        backgroundColor: 'lightgray'
+        backgroundColor: 'black'
     },
     logo: {
         marginRight: '15px',
         padding: '0 13px',
-        fontSize: '24px',
+        fontSize: '28px',
         fontWeight: 'bold',
-        backgroundColor: '#eceff1',
+        backgroundColor: 'black',
         fontFamily: 'IndieFlower',
         textDecoration: 'none',
         height: '100%',
@@ -21,7 +21,7 @@ const styles= {
         alignItems: 'center',
         "& a": {
             textDecoration: 'none',
-            color: 'black'
+            color: 'white'
         },
         [sizes.down("xs")]: {
             display: "none"
@@ -38,23 +38,27 @@ const styles= {
             backgroundColor: 'transparent'
         },
         " & .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus, .rc-slider-handle:hover": {
-            backgroundColor: 'green',
-            outline: 'none',
-            border: '2px solid black',
+            backgroundColor: 'blue',
+            outline: 'gray',
+            border: '2px solid white',
             boxShadow: 'none',
             width: '13px',
             height: '13px',
-            marginLeft: '-7px',
+            marginLeft: '-3px',
             marginTop: '-3px'
         },
         [sizes.down("sm")]: {
             width: "150px"
         }
     },
+    sliderLabel: {
+        color: 'white',
+        fontWeight: "bold",
+        fontSize: "18px"
+    },
     selectContainer: {
         marginLeft: 'auto',
         marginRight: '1rem',
-        paddingLeft: '1rem',
         backgroundColor: '#eceff1'
     },
     selectInput: {

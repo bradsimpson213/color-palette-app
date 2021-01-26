@@ -39,7 +39,7 @@ const styles = {
         color: props =>
             chroma(props.background).luminance() <= 0.10 ? "white" : "black",
         fontWeight: 'bold',
-        fontSize: '1.2rem',
+        fontSize: '1.1rem',
         marginLeft: '15px'
     },
     seeMore: {
@@ -54,7 +54,8 @@ const styles = {
         height: "30px",
         textAlign: "center",
         lineHeight: "30px",
-        textTransform: "uppercase" 
+        textTransform: "uppercase",
+        fontWeight: 'bold' 
     },
     copyButton: {
         width: "100px",

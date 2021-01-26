@@ -31,7 +31,7 @@ const Navbar = (props) => {
             </div>
                 { multiColor && (
                     <div>
-                        <span>Level: { level }</span>
+                        <span className={ classes.sliderLabel }>Level: { level }</span>
                         <div className={ classes.slider }>
                             <Slider 
                                 startPoint={ 500 } 
