@@ -1,12 +1,14 @@
 const styles = {
     footer: {
-        backgroundColor: 'lightgray',
+        backgroundColor: 'black',
         height: '5vh',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        color: 'white',
         fontWeight: 'bold',
+        fontSize: '1.3rem',
         paddingTop: '10px'
     },
     emoji: {
@@ -14,12 +16,12 @@ const styles = {
         margin: '0 1rem'
     },
     text: {
-        color: 'black',
+        color: 'white',
         textAlign: 'center',
         margin: '0 15px 0 15px',
     },
     icons: {
-        color: 'black',
+        color: 'white',
         margin: '7px 10px 0 10px',
        
     }

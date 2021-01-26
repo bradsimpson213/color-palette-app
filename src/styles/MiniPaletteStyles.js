@@ -12,7 +12,7 @@ const styles = {
        }
     },
     colors: {
-        backgroundColor: "#dae1e4",
+        backgroundColor: "black",
         borderRadius: "15px",
         height: "200px",
         width: "100%",

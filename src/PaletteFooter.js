@@ -13,13 +13,13 @@ const PaletteFooter = (props) => {
     return (
         <footer className={ classes.footer }>
             <div>
+                <span className={ classes.text }>Created by Brad Simpson ©2021</span>
                 <a href={github} >
                     <FaGithub className={ classes.icons } />
                 </a>
                 <a href={linkedin} >
                     <FaLinkedin className={ classes.icons } />
                 </a>
-                <span className={ classes.text }>Created by Brad Simpson ©2021</span>
                 <a href={angel} >
                     <FaAngellist className={ classes.icons } />
                 </a> 
