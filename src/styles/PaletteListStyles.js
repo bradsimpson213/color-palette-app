@@ -23,6 +23,18 @@ const styles = {
         overflow: "scroll"
 
     },
+    utils: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        display: 'flex',
+        flexDirection: 'rows',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '250px',
+        color: 'white'
+        
+    },
     container: {
         width: "60%",
         display: "flex",
@@ -50,8 +62,11 @@ const styles = {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: "repeat(3, 30%)",
+        gridTemplateColumns: "repeat(4, 25%)",
         gridGap: "2.5rem",
+        [sizes.down('xl')]: {
+            gridTemplateColumns: "repeat(3, 30%)",
+        },
         [sizes.down("md")]:{
             gridTemplateColumns: "repeat(2, 50%)",
         },

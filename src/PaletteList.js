@@ -56,25 +56,28 @@ const PaletteList = memo((props) => {
 
     return (
         <div className={ classes.root }>
-            <IconButton
-                onClick={ paletteReset } 
-                aria-label="delete">
-                <PaletteIcon 
-                fontSize="large"
-                style={{ color: "white" }} 
+            <div className={ classes.utils }>
+                <IconButton
+                    onClick={ paletteReset } 
+                    aria-label="delete"
+                >
+                    <PaletteIcon 
+                        fontSize="large"
+                        style={{ color: "white" }} 
+                    />  
+                </IconButton>
+                <FormControlLabel
+                    label={ darkmode ? "Dark Theme" : "Light Theme" }
+                    control={
+                        <Switch
+                            checked={ darkmode }
+                            onChange={ toggleDarkMode }
+                            name="checkedB"
+                            color="primary"
+                        />
+                    }
                 />
-            </IconButton>
-            <FormControlLabel
-                label={ darkmode ? "Dark Theme" : "Light Theme" }
-                control={
-                    <Switch
-                        checked={ darkmode }
-                        onChange={ toggleDarkMode }
-                        name="checkedB"
-                        color="primary"
-                    />
-                }
-                />
+            </div>
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>

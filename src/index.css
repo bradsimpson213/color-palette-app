@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'IndieFlower';
+  src: url('./assets/IndieFlower-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/Roboto-Regular.ttf') format('truetype');
+}
+
+
 body {
   margin: 0;
   font-family: 'IndieFlower', 'Roboto', sans-serif;
@@ -10,12 +21,3 @@ code {
     monospace;
 }
 
-@font-face {
-  font-family: 'IndieFlower';
-  src: url('./assets/IndieFlower-Regular.ttf') format('truetype')
-}
-
-@font-face {
-  font-family: 'Roboto';
-  src: url('./assets/Roboto-Regular.ttf') format('truetype');
-}
