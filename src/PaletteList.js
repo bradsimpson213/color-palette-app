@@ -8,12 +8,14 @@ import MainFooter from './MainFooter';
 // Material imports
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import PaletteIcon from '@material-ui/icons/Palette';
+import Switch from '@material-ui/core/Switch';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close'
@@ -35,6 +37,7 @@ const PaletteList = memo((props) => {
     const { palettes, removePalette, paletteReset } = props;
     const [deleteOpen, toggleDeleteOpen] = useToggleState(false)
     const [deleteId, setDeleteId] = useState('');
+    const [darkmode, toggleDarkMode] = useToggleState(true)
 
     const navToPalette = (id) => {
         history.push(`/palette/${id}`);
@@ -61,6 +64,17 @@ const PaletteList = memo((props) => {
                 style={{ color: "white" }} 
                 />
             </IconButton>
+            <FormControlLabel
+                control={
+                <Switch
+                    checked={ darkmode }
+                    onChange={ toggleDarkMode }
+                    name="checkedB"
+                    color="primary"
+                />
+                }
+                label="Primary"
+            />
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
