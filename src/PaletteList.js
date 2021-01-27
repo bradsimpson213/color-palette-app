@@ -65,16 +65,16 @@ const PaletteList = memo((props) => {
                 />
             </IconButton>
             <FormControlLabel
+                label={ darkmode ? "Dark Theme" : "Light Theme" }
                 control={
-                <Switch
-                    checked={ darkmode }
-                    onChange={ toggleDarkMode }
-                    name="checkedB"
-                    color="primary"
-                />
+                    <Switch
+                        checked={ darkmode }
+                        onChange={ toggleDarkMode }
+                        name="checkedB"
+                        color="primary"
+                    />
                 }
-                label="Primary"
-            />
+                />
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
