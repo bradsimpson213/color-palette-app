@@ -143,7 +143,8 @@ const NewPaletteForm = (props) => {
       randomNumber = Math.floor(Math.random() * allColors.length);
       randomColor = allColors[randomNumber];
       // eslint-disable-next-line 
-      duplicateColor = colors.some(color => color.name === randomColor)
+      duplicateColor = colors.some(color => color.name === randomColor.name)
+      console.log(duplicateColor, "color: ", randomColor.name)
     }
     setColors([...colors, randomColor]);
   };
