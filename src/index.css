@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'IndieFlower', 'Helvetica Neue', sans-serif;
+  font-family: 'IndieFlower', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,14 +10,12 @@ code {
     monospace;
 }
 
-/* @font-face {
-  font-family: 'Roboto';
-  src: url('./assets/Roboto-Medium.ttf') format('truetype');
-} */
-
 @font-face {
   font-family: 'IndieFlower';
   src: url('./assets/IndieFlower-Regular.ttf') format('truetype')
 }
 
-
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/Roboto-Regular.ttf') format('truetype');
+}

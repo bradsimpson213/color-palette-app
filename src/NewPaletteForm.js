@@ -202,7 +202,6 @@ const NewPaletteForm = (props) => {
           <ColorPickerForm 
             fullPalette={ fullPalette }
             addNewColor={ addNewColor }
-            fontFamily="IndieFlower"
           />
         </div>     
       </Drawer>

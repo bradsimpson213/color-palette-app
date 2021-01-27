@@ -31,6 +31,11 @@ const App = () => {
     setPalettes( palettes.filter( palette => palette.id !== id ));
   };
 
+  const paletteReset = () => {
+    localStorage.removeItem('palettes');
+    setPalettes(seedColors);
+  }
+
   // useEffect will sync localStorage each time state of palettes is changed
   useEffect( () => {
     window.localStorage.setItem("palettes", JSON.stringify(palettes));
@@ -66,6 +71,7 @@ const App = () => {
                   <PaletteList 
                     palettes={ palettes } 
                     removePalette={ removePalette }
+                    paletteReset={ paletteReset }
                   /> 
                 </Page>
               )}

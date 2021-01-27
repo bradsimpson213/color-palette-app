@@ -8,10 +8,12 @@ import MainFooter from './MainFooter';
 // Material imports
 import Avatar from '@material-ui/core/Avatar';
 import Dialog from '@material-ui/core/Dialog';
+import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
+import PaletteIcon from '@material-ui/icons/Palette';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close'
@@ -30,7 +32,7 @@ const useStyles = makeStyles(styles);
 const PaletteList = memo((props) => {
     let history = useHistory();
     const classes = useStyles()
-    const { palettes, removePalette } = props;
+    const { palettes, removePalette, paletteReset } = props;
     const [deleteOpen, toggleDeleteOpen] = useToggleState(false)
     const [deleteId, setDeleteId] = useState('');
 
@@ -51,6 +53,14 @@ const PaletteList = memo((props) => {
 
     return (
         <div className={ classes.root }>
+            <IconButton
+                onClick={ paletteReset } 
+                aria-label="delete">
+                <PaletteIcon 
+                fontSize="large"
+                style={{ color: "white" }} 
+                />
+            </IconButton>
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
