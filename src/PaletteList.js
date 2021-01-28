@@ -75,10 +75,10 @@ const PaletteList = memo((props) => {
                     label={ darkmode ? "Dark Theme" : "Light Theme" }
                     control={
                         <Switch
+                            defaultChecked
+                            color="default"
                             checked={ darkmode }
                             onChange={ toggleDarkMode }
-                            name="checkedB"
-                            color="primary"
                         />
                     }
                 />
