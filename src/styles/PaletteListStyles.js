@@ -92,6 +92,7 @@ const styles = {
         backgroundColor: "black",
         border: "1px solid black",
         borderRadius: "15px",
+        height: '250px',
         padding: "0.5rem",
         position: "relative",
         overflow: "hidden",
@@ -100,20 +101,17 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
-       
+        alignItems: 'center'       
     },
     newPaletteBoxTitle: {
         color: 'white',
         fontFamily: 'IndieFlower',
         fontWeight: 'bold',
-        fontSize: '2rem',
-        opacity: 1,
+        fontSize: '2rem'
     },
     newPaletteBoxIcon: {
         color: 'white',
         fontSize: '3rem',
-        // opacity: 1,
     }
 };
 

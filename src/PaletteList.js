@@ -1,6 +1,6 @@
 // React imports
 import React, { useState, memo } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useToggleState from './hooks/useToggleState';
 // Custom Component imports
 import MiniPalette from './MiniPalette';
@@ -44,6 +44,10 @@ const PaletteList = memo((props) => {
         history.push(`/palette/${id}`);
     };
 
+    const navToNew = () => {
+        history.push("/palette/new")
+    }
+
     const openDeleteDialog = (id) => {
         setDeleteId(id);
         toggleDeleteOpen();
@@ -82,13 +86,6 @@ const PaletteList = memo((props) => {
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
-                    {/* <Link 
-                        to="/palette/new"
-                        className={ classes.newLink }
-                        style={{ fontSize: '1.8rem'}}
-                    >
-                        Create New Palette
-                    </Link> */}
                 </nav>
                 <TransitionGroup className={ classes.palettes }>
                     { palettes.map(palette => (
@@ -105,15 +102,12 @@ const PaletteList = memo((props) => {
                                 />
                         </CSSTransition>
                     ))}
-                    <div className={ classes.newPaletteBox }>
+                    <div 
+                        className={ classes.newPaletteBox }
+                        onClick={ navToNew }
+                    >
                         <span className={ classes.newPaletteBoxTitle }> Create New </span> 
-                        <Link 
-                            to="/palette/new"
-                            className={ classes.newLink }
-                            style={{ fontSize: '1.8rem'}}
-                        >
                             <AddBoxOutlinedIcon className={ classes.newPaletteBoxIcon } />
-                        </Link>
                         <span className={ classes.newPaletteBoxTitle }> Palette </span> 
                     </div>
                 </TransitionGroup>
