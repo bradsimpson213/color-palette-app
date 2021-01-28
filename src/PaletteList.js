@@ -18,7 +18,8 @@ import PaletteIcon from '@material-ui/icons/Palette';
 import Switch from '@material-ui/core/Switch';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CheckIcon from '@material-ui/icons/Check';
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@material-ui/icons/Close';
+import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
 // Util imports
 import { v4 as uuid } from 'uuid';
 // Style imports
@@ -81,13 +82,13 @@ const PaletteList = memo((props) => {
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
                     <h1 className={ classes.mainTitle }>React Colors</h1>
-                    <Link 
+                    {/* <Link 
                         to="/palette/new"
                         className={ classes.newLink }
                         style={{ fontSize: '1.8rem'}}
                     >
                         Create New Palette
-                    </Link>
+                    </Link> */}
                 </nav>
                 <TransitionGroup className={ classes.palettes }>
                     { palettes.map(palette => (
@@ -104,6 +105,17 @@ const PaletteList = memo((props) => {
                                 />
                         </CSSTransition>
                     ))}
+                    <div className={ classes.newPaletteBox }>
+                        <span className={ classes.newPaletteBoxTitle }> Create New </span> 
+                        <Link 
+                            to="/palette/new"
+                            className={ classes.newLink }
+                            style={{ fontSize: '1.8rem'}}
+                        >
+                            <AddBoxOutlinedIcon className={ classes.newPaletteBoxIcon } />
+                        </Link>
+                        <span className={ classes.newPaletteBoxTitle }> Palette </span> 
+                    </div>
                 </TransitionGroup>
                 <MainFooter />
             </div>

@@ -87,6 +87,33 @@ const styles = {
         [sizes.down("xs")]:{
            margin: '0 0 0 10px'
         }
+    },
+    newPaletteBox: {
+        backgroundColor: "black",
+        border: "1px solid black",
+        borderRadius: "15px",
+        padding: "0.5rem",
+        position: "relative",
+        overflow: "hidden",
+        cursor: "pointer",
+        opacity: 0.5,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+       
+    },
+    newPaletteBoxTitle: {
+        color: 'white',
+        fontFamily: 'IndieFlower',
+        fontWeight: 'bold',
+        fontSize: '2rem',
+        opacity: 1,
+    },
+    newPaletteBoxIcon: {
+        color: 'white',
+        fontSize: '3rem',
+        // opacity: 1,
     }
 };
 

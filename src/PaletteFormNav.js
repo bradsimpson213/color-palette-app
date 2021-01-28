@@ -117,8 +117,14 @@ const PaletteFormNav = (props) => {
                     </Typography>
                     </Toolbar>
                     <div className={ classes.navButtons }>
-         
-                        
+                        <Button 
+                            className={ classes.button }
+                            variant="contained" 
+                            color="primary" 
+                            onClick={ toggleFormShowing }
+                        >
+                            Save
+                        </Button>
                         <Link 
                             className={ classes.link }
                             to="/"
@@ -131,14 +137,6 @@ const PaletteFormNav = (props) => {
                                 Go Back
                             </Button>
                         </Link>
-                        <Button 
-                            className={ classes.button }
-                            variant="contained" 
-                            color="primary" 
-                            onClick={ toggleFormShowing }
-                        >
-                            Save
-                        </Button>
                     </div>
                 </AppBar>
                 { formShowing && (<PaletteMetaForm 

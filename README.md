@@ -6,16 +6,23 @@ To make it more my own (and as a refresher for myself on using React), I have us
 
 I still have a few issues to work out, as not everything was easily converted from class to functional components.  I am also customizing the styling some and may try eventually conecting it to MongoDB for user CRUD and palette storage,
 
-WIP Issues:
+## WIP Issues
 
 - Custom validators for unique colors not working
 - SetTimeOut on copied graphic (no callback built in to useState)
+- Adding a dark/light theme mode
+
+## What I have added/customized so far
+
+- All components are fuctional components
+- Icon button to reset palettes to default
+- Custom styling
 
 ## Technologies Used
 
 - Material UI
 - Material UI/JSS styled components with a mix of withStyles and makeStyles
-- React copy to clipboard
+- React copy to clipboard (for copy to clipboard, duh!)
 - Chroma JS (for color conversion)
 - React Component Slider (rc-slider) (for color palette slider)
 - react Color (for color picker)
@@ -23,5 +30,5 @@ WIP Issues:
 - React Transition Group (for transitions)
 - React Sortable HOC (for drag and drop in a grid)
 - ArrayMove (helper for ordering the drag and drop)
-- React Material UI Form Validator (for form validation, this may get replaced)
+- React Material UI Form Validator (for form validation, this may get replaced as it is not working with custom validations)
 - Emoji Mart (for emoji picker)
