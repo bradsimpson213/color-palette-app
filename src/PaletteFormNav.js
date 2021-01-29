@@ -58,11 +58,12 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     button: {
-        margin: '0 0.5rem',
+        margin: '0 0.6rem',
         fontFamily: 'IndieFlower',
         color: 'white',
+        border: '1px solid white',
         fontWeight: 'bold',
-        fontSize: '1rem',
+        fontSize: '1.1rem',
         [sizes.down("xs")]: {
             margin: '0 0.2rem',
             padding: '0.3rem'

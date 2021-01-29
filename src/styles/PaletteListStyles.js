@@ -30,7 +30,8 @@ const styles = {
         display: 'flex',
         flexDirection: 'rows',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
+        marginRight: '20px',
         width: '250px',
         color: 'white'
         
@@ -76,9 +77,9 @@ const styles = {
         }
     },
     mainTitle: {
-        fontSize: "3.7rem",
+        fontSize: '4.0rem',
         fontWeight: 'bold',
-        textShadow: "-2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000"
+        textShadow: "-3px 3px 0 #000, 3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000"
     },
     newLink: {
         fontsize: '3.0rem',
@@ -112,6 +113,7 @@ const styles = {
     newPaletteBoxIcon: {
         color: 'white',
         fontSize: '3rem',
+        margin: '10px 0 10px 0'
     }
 };
 

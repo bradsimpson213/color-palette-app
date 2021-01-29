@@ -74,6 +74,7 @@ const styles= {
         fontFamily: 'IndieFlower',
         fontSize: '1rem',
         fontWeight: 'bold',
+        border: '1px solid white',
         [sizes.down("xs")]: {
             margin: '0 0.2rem',
             padding: '0.3rem'
