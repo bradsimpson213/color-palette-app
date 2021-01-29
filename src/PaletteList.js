@@ -125,7 +125,7 @@ const PaletteList = memo((props) => {
                     <ListItem 
                         button
                         onClick={ deletePalette } 
-                        >
+                    >
                         <ListItemAvatar>
                             <Avatar style={{ backgroundColor: blue[100], color: blue[600] }}>
                                 <CheckIcon />
