@@ -20,7 +20,8 @@ const styles = {
         /* background by SVGBackgrounds.com */
         backgroundImage: `url(${BackgroundSvg})`,
         backgroundSize: "cover",
-        overflow: "scroll"
+        overflow: "scroll",
+        paddingRight: '30px'
 
     },
     utils: {
@@ -37,11 +38,12 @@ const styles = {
         
     },
     container: {
-        width: "60%",
+        width: "65%",
         display: "flex",
-        alignItems: "flex-start",
         flexDirection: "column",
         flexWrap: "wrap",
+        alignItems: "flex-end",
+        justifyContent: 'center',
         [sizes.down("xl")]:{
             width: '80%'
         },
@@ -77,9 +79,15 @@ const styles = {
         }
     },
     mainTitle: {
-        fontSize: '4.0rem',
+        fontSize: '4.5rem',
         fontWeight: 'bold',
-        textShadow: "-3px 3px 0 #000, 3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000"
+        textShadow: "-3px 3px 0 #000, 3px 3px 0 #000, 3px -3px 0 #000, -3px -3px 0 #000",
+        margin: '30px 30px',
+        [sizes.down("xs")]:{
+            fontSize: '3.5rem',
+            margin: '10px 1px',
+
+        }
     },
     newLink: {
         fontsize: '3.0rem',
