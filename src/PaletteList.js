@@ -16,6 +16,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import PaletteIcon from '@material-ui/icons/Palette';
 import Switch from '@material-ui/core/Switch';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Fade from '@material-ui/core/Fade';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
@@ -39,6 +42,8 @@ const PaletteList = memo((props) => {
     const [deleteOpen, toggleDeleteOpen] = useToggleState(false)
     const [deleteId, setDeleteId] = useState('');
     const [darkmode, toggleDarkMode] = useToggleState(true)
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
 
     const navToPalette = (id) => {
         history.push(`/palette/${id}`);
@@ -57,13 +62,21 @@ const PaletteList = memo((props) => {
         removePalette(deleteId);
         toggleDeleteOpen();
         setDeleteId('');
-    }
+    };
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <div className={ classes.root }>
             <div className={ classes.utils }>
                 <IconButton
-                    onClick={ paletteReset } 
+                    onClick={ handleClick } 
                     aria-label="delete"
                 >
                     <PaletteIcon 
@@ -71,17 +84,30 @@ const PaletteList = memo((props) => {
                         style={{ color: "white" }} 
                     />  
                 </IconButton>
-                <FormControlLabel
-                    label={ darkmode ? "Dark Theme" : "Light Theme" }
-                    control={
-                        <Switch
-                            defaultChecked
-                            color="default"
-                            checked={ darkmode }
-                            onChange={ toggleDarkMode }
+                <Menu
+                    id="fade-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={ open }
+                    onClose={ handleClose }
+                    TransitionComponent={Fade}
+                >
+                    <MenuItem> Site Settings </MenuItem>
+                    <MenuItem>
+                        <FormControlLabel
+                            label={ darkmode ? "Dark Theme" : "Light Theme" }
+                            control={
+                                <Switch
+                                    defaultChecked
+                                    color="default"
+                                    checked={ darkmode }
+                                    onChange={ toggleDarkMode }
+                                />
+                            }
                         />
-                    }
-                />
+                    </MenuItem>
+                    <MenuItem onClick={ paletteReset }> Reset Palettes </MenuItem>
+                </Menu>
             </div>
             <div className={ classes.container }>
                 <nav className={ classes.nav }>
