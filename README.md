@@ -11,6 +11,7 @@ I still have a few issues to work out, as not everything was easily converted fr
 - Custom validators for unique colors not working
 - SetTimeOut on copied graphic (no callback built in to useState)
 - Adding a dark/light theme mode
+- Adding a database to save colors and user instead of local storage
 
 ## What I have added/customized so far
 
