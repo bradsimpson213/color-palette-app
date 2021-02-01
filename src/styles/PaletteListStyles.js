@@ -66,7 +66,7 @@ const styles = {
         width: "100%",
         display: "grid",
         gridTemplateColumns: "repeat(4, 25%)",
-        gridGap: "2.5rem",
+        gridGap: "2.3rem",
         [sizes.down('xl')]: {
             gridTemplateColumns: "repeat(3, 30%)",
         },

@@ -3,7 +3,7 @@ const styles = {
        backgroundColor: "black",
        border: "1px solid black",
        borderRadius: "15px",
-       padding: "0.5rem",
+       padding: "0.7rem",
        position: "relative",
        overflow: "hidden",
        cursor: "pointer",
@@ -33,12 +33,13 @@ const styles = {
         fontSize: "1.5rem"
     },
     miniColor: {
-        height: "25%",
-        width: "20%",
+        height: "23%",
+        width: "19.2%",
         display: "inline-block",
         margin: "0 auto",
         position: "relative",
-        marginBottom: "-3.5px"
+        marginBottom: "-7px",
+        border: "1px solid black"
     },
     delete: {
 
